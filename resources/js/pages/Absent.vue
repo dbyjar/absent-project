@@ -22,7 +22,7 @@ export default {
 
                 alert("success")
             } catch (error) {
-                console.log(error)
+                
             }
         }
     },

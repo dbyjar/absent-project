@@ -10821,3 +10821,39 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.double-scroll {
+  margin-top: 1.5rem;
+  transform: rotateX(180deg);
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.double-scroll .base-table {
+  margin: 0;
+  transform: rotateX(180deg);
+  min-height: 480px;
+}
+
+.base-table-row {
+  display: flex;
+  align-items: stretch;
+}
+.base-table-row .base-table-column {
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.0823529412);
+  min-width: 124px;
+  flex: 1 1 0;
+  padding: 0.5rem 0.85rem;
+  overflow: hidden;
+  white-space: break-word;
+  text-overflow: ellipsis;
+}
+.base-table-row .base-table-column.overflow-visible {
+  overflow: visible;
+  white-space: normal;
+}
+
+.base-table-row-head .base-table-column {
+  font-weight: 600;
+  background-color: transparent;
+  line-height: 40px;
+  text-transform: capitalize;
+}

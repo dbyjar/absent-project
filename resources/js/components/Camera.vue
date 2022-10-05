@@ -57,6 +57,9 @@ export default {
       this.base64URI = base64URI
       this.$emit("snap", this.base64URI)
     }
+  },
+  destroyed() {
+    Webcam.reset();
   }
 }
 </script>
