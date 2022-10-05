@@ -25,7 +25,7 @@ class AbsentRequest extends FormRequest
         throw new HttpResponseException(response()->json([
             'success'   => false,
             'message'   => $validator->errors()
-        ]));
+        ], 500));
     }
 
     public function messages()
