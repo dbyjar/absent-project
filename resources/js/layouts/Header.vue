@@ -4,19 +4,11 @@
       <div class="navbar-header" data-logobg="skin6">
         <a class="navbar-brand" href="/">
           <b class="logo-icon">
-            <img src="@assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-            <img src="@assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+            <img src="@assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" />
           </b>
           <span class="logo-text">
-            <img src="@assets/images/logo-text.png" alt="homepage" class="dark-logo" />
-            <img src="@assets/images/logo-text.png" alt="homepage" class="light-logo" />
+            <img src="@assets/images/logo-light-text.png" alt="homepage" class="dark-logo" />
           </span>
-        </a>
-        <a
-          class="nav-toggler waves-effect waves-light d-block d-md-none"
-          href="javascript:void(0)"
-        >
-          <i class="mdi mdi-menu"></i>
         </a>
       </div>
       
@@ -24,18 +16,16 @@
         <ul class="navbar-nav float-start me-auto"><!-- left header --></ul>
         <ul class="navbar-nav float-end">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="@assets/images/users/profile.png" alt="user" class="rounded-circle" width="31">
+            <a class="nav-link dropdown-toggle text-muted pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-capitalize fs-6 me-3">User</span>
+              <img src="@assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
             </a>
-            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu dropdown-menu-end animated" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="javascript:void(0)">
-                <i class="ti-user m-r-5 m-l-5"></i> My Profile
+                <i class="far fa-fw fa-id-badge"></i> My Profile
               </a>
               <a class="dropdown-item" href="javascript:void(0)">
-                <i class="ti-wallet m-r-5 m-l-5"></i> My Balance
-              </a>
-              <a class="dropdown-item" href="javascript:void(0)">
-                <i class="ti-email m-r-5 m-l-5"></i> Inbox
+                <i class="fas fa-fw fa-hand-point-left"></i> Logout
               </a>
             </ul>
           </li>

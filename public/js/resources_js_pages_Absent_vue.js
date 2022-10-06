@@ -125,7 +125,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 data.append("image", image);
                 _context.prev = 2;
                 _context.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/absent", data);
+                return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/employee/absent", data);
 
               case 5:
                 alert("success");

@@ -1,9 +1,11 @@
 <template>
   <div class="card">
-    <div class="card-header" v-if="header">{{ title }}</div>
+    <div class="card-header text-capitalize" v-if="header">
+      {{ title }}
+    </div>
     <div class="card-body">
       <div class="d-md-flex">
-        <div v-if="!header">
+        <div v-if="!header" class="text-capitalize">
           <h4 class="card-title">{{ title }}</h4>
           <h5 class="card-subtitle">{{ subtitle }}</h5>
         </div>

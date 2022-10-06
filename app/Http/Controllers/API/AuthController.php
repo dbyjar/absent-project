@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Auth;
 use JWTAuth;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
@@ -100,10 +101,9 @@ class AuthController extends Controller
         }
     }
  
-    public function get_user()
+    public function getUser()
     {
-        // $user = Auth::user() ?? Auth::guard('jwt.verify')->user();
-        $user = User::all();
+        $user = Auth::user() ?? Auth::guard('jwt.verify')->user();
  
         return response()->json(['user' => $user]);
     }

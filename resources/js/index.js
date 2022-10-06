@@ -1,13 +1,17 @@
 require('bootstrap');
 
 window._ = require('lodash');
-window.Vue = require('vue').default;
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Vue from 'vue';
+import PortalVue from 'portal-vue'
 import { router } from './router/index'
+import { global } from './mixins'
 import App from './layouts/Index.vue'
+
+Vue.mixin(global);
+Vue.use(PortalVue)
 
 const files = require.context('./components/global/', true, /\.vue$/i)
 files

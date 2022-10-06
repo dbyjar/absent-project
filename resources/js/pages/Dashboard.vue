@@ -1,19 +1,31 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-12">
-        <Box>
-          <template #right-side-title>
-            <div class="dl">
-              <select class="form-select shadow-none">
-                <option value="0" selected>Monthly</option>
-                <option value="1">Daily</option>
-                <option value="2">Weekly</option>
-                <option value="3">Yearly</option>
-              </select>
-            </div>
-          </template>
-          <BaseTable></BaseTable>
+      <div class="col-lg-12">
+        <Box title="employee absentee list">
+          <BaseTable
+            :config="{
+              namespace: 'employee',
+              params: {
+                user_id: 1
+              }
+            }"
+            :columns="columns"
+            v-slot="{ rows }"
+          >
+            <base-table-row v-for="row in rows" :key="row.id">
+              <base-table-column>{{ formatDate(row.created_at) }}</base-table-column>
+              <base-table-column>{{ row.name }}</base-table-column>
+              <base-table-column>{{ row.email }}</base-table-column>
+              <base-table-column class="text-end" overflow-visible>
+              <action-tool
+                @edit="edit(row.id)"
+                @remove="remove(row.id)"
+                withoutDetail
+              ></action-tool>
+              </base-table-column>
+            </base-table-row>
+          </BaseTable>
         </Box>
       </div>
     </div>
@@ -84,3 +96,24 @@
     </div> -->
   </div>
 </template>
+
+<script>
+export default {
+  data: () => ({
+    columns: [
+      {
+        name: "created at",
+        class: "",
+      },
+      {
+        name: "name",
+        class: "",
+      },
+      {
+        name: "email",
+        class: "",
+      },
+    ]
+  })
+}
+</script>

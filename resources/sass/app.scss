@@ -9,15 +9,15 @@
 
 // BaseTable
 .double-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-top: 1.5rem;
   transform: rotateX(180deg);
-  overflow-y: hidden;
-  overflow-x: auto;
 
   .base-table {
     margin: 0;
+    min-height: 480px;
     transform: rotateX(180deg);
-    min-height: 480px
   }
 }
 
@@ -26,17 +26,35 @@
   align-items: stretch;
 
   .base-table-column {
-    border-bottom: 1.5px solid rgba(0, 0, 0, .08235294117647059);
-    min-width: 124px;
     flex: 1 1 0;
-    padding: 0.5rem 0.85rem;
+    min-width: 124px;
     overflow: hidden;
+    padding: 0.5rem 0.85rem;
     white-space: break-word;
     text-overflow: ellipsis;
+    border-bottom: 1.5px solid rgba(0, 0, 0, .08235294117647059);
 
     &.overflow-visible {
       overflow: visible;
       white-space: normal;
+    }
+
+    // dropdown actiontool
+    .dropdown-menu {
+      &.show {
+        display: block !important;
+        position: absolute !important;
+        inset: 0px 0px auto 85px !important;
+        transform: translate(-220px, -5px) !important;
+      }
+    }
+
+    .dropstart {
+      .dropdown-toggle {
+        &:before {
+          display: none !important;
+        }
+      }
     }
   }
 }
@@ -44,8 +62,8 @@
 .base-table-row-head {
   .base-table-column {
     font-weight: 600;
-    background-color: transparent;
     line-height: 40px;
     text-transform: capitalize;
+    background-color: transparent;
   }
 }

@@ -1,6 +1,6 @@
 <template>
-    <div class="page-wrapper">
-        <div class="page-breadcrumb">
+    <div :class="['page-wrapper', { 'ms-0': isLandingPage }]">
+        <div class="page-breadcrumb" v-if="!isLandingPage">
             <div class="row align-items-center">
                 <div class="col-6">
                     <nav aria-label="breadcrumb">
@@ -14,22 +14,18 @@
                                 <span class="text-capitalize">{{ $route.name }}</span>
                             </li>
                         </ol>
-                        </nav>
+                    </nav>
                     <h1 class="mb-0 fw-bold">
                         <span class="text-capitalize">{{ $route.name }}</span>
                     </h1> 
                 </div>
-                <!-- <div class="col-6">
-                    <div class="text-end upgrade-btn">
-                        <a href="/" class="btn btn-primary text-white" target="_blank">Pro</a>
-                    </div>
-                </div> -->
+                <div class="col-6 d-flex justify-content-end">
+                    <portal-target name="destination"></portal-target>
+                </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <slot></slot>
-        </div>
-        <!-- <Footer></Footer> -->
+        <div class="container-fluid"><slot></slot></div>
+        <Footer v-if="!isLandingPage" />
     </div>
 </template>
 
@@ -37,6 +33,17 @@
 import Footer from '@layouts/Footer.vue'
 
 export default {
-    components: { Footer },
+    components: {
+        Footer,
+    },
+    computed: {
+        isLandingPage() {
+            return (
+                this.$route.name === "login"
+                || this.$route.name === "absent"
+                || this.$route.name === "notFound"
+            )
+        }
+    }
 }
 </script>

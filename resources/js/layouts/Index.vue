@@ -2,8 +2,8 @@
   <div>
     <Preloader />
     <Wrapper>
-      <Header></Header>
-      <Sidebar></Sidebar>
+      <Header v-if="!isLandingPage" />
+      <Sidebar v-if="!isLandingPage" />
       <PageWrapper>
         <router-view></router-view>
       </PageWrapper>
@@ -26,5 +26,14 @@ export default {
     Sidebar,
     PageWrapper,
   },
+  computed: {
+    isLandingPage() {
+      return (
+        this.$route.name === "login"
+          || this.$route.name === "absent"
+          || this.$route.name === "notFound"
+      )
+    }
+  }
 }
 </script>

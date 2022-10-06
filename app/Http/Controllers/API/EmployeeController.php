@@ -3,12 +3,25 @@
 namespace App\Http\Controllers\API;
 
 use Carbon\Carbon;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AbsentRequest;
 
 class EmployeeController extends Controller
 {
+    public function index(Request $request)
+    {
+        $limit = $request["limit"] ?? 10;
+        $keyword = $request["search"];
+
+        $user = User::when($keyword, function ($query) use ($keyword) {
+            $query->where("name", "like", "%$keyword%");
+        })->paginate($limit);
+ 
+        return response()->json(['results' => $user]);
+    }
+
     public function absent(AbsentRequest $request)
     {
         $request->validate([

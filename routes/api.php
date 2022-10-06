@@ -20,10 +20,13 @@ use App\Http\Controllers\API\EmployeeController;
 Route::post('login', [AuthController::class, 'authenticate']);
 Route::post('register', [AuthController::class, 'register']);
 
-// Absent Employee
-Route::post('absent', [EmployeeController::class, 'absent']);
+// Employee
+Route::prefix('employee')->group(function () {
+    Route::get('/', [EmployeeController::class, 'index']);
+    Route::post('absent', [EmployeeController::class, 'absent']);
+});
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('logout', [AuthController::class, 'logout']);
-    Route::get('get_user', [AuthController::class, 'get_user']);
+    Route::get('get_user', [AuthController::class, 'getUser']);
 });

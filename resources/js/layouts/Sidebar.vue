@@ -1,7 +1,7 @@
 <template>
   <aside class="left-sidebar" data-sidebarbg="skin6">
     <div class="scroll-sidebar">
-      <nav class="sidebar-nav mt-5">
+      <nav class="sidebar-nav mt-3">
         <ul id="sidebarnav">
           <li
             :class="['sidebar-item', { 'selected': $route.name === menu.routeName }]"
@@ -39,12 +39,5 @@ export default {
       },
     ]
   }),
-  watch: {
-    "$route.name": {
-      handler(val) {
-        console.log(val)
-      }
-    }
-  }
 }
 </script>

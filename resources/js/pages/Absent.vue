@@ -18,7 +18,7 @@ export default {
             data.append("image", image)
 
             try {
-                await axios.post("/api/absent", data)
+                await axios.post("/api/employee/absent", data)
 
                 alert("success")
             } catch (error) {
