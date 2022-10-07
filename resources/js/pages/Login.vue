@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import Cookies from 'js-cookie'
+
 export default {
   data:() =>({
     form: {},
@@ -38,9 +40,9 @@ export default {
       this.loading = true
       
       try {
-        const { data } = await axios.post(`/api/login`, this.form)
+        const { results } = (await axios.post(`/api/login`, this.form)).data
         
-        localStorage.setItem("tokenEmployeeAbsent", data.token)
+        Cookies.set("absentSession", results.token, { expires: 1 })
         this.$router.push({
           name: 'dashboard'
         })

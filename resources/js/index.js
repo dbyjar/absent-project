@@ -6,7 +6,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Vue from 'vue';
 import PortalVue from 'portal-vue'
-import { router } from './router/index'
+import router from './router/index'
 import { global } from './mixins'
 import App from './layouts/Index.vue'
 

@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Cookies from 'js-cookie'
 
 Vue.use(VueRouter)
+
 const routes = [
   {
     path: "*",
@@ -25,7 +27,35 @@ const routes = [
   },
 ]
 
-export const router = new VueRouter({
+const router = new VueRouter({
   mode: "history",
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = Cookies.get("absentSession") ?? null
+
+  if (
+    to.name === 'login'
+    || to.name === 'absent'
+  ) {
+    if (to.name === 'login' && isAuthenticated) {
+      return next({ name: 'dashboard' })
+    }
+
+    return next()
+  }
+
+  if (
+    (
+      to.name !== 'login'
+      || to.name !== 'absent'
+    ) && !isAuthenticated
+  ) {
+    return next({ name: 'login' })
+  } else {
+    return next()
+  }
+})
+
+export default router
