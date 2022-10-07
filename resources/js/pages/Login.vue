@@ -1,28 +1,28 @@
 <template>
-  <div id="main-wrapper">
-    <div class="d-flex justify-content-center align-items-center">
-      <Box
-        class="box-login"
-        :title="'log in'"
-        :subtitle="'login for access menu'"
-      >
-        <form>
-          <div class="mb-3">
-            <label class="form-label">Email address</label>
-            <input type="email" class="form-control" v-model="form.email">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password</label>
-            <input type="password" class="form-control" v-model="form.password">
-            <small class="text-danger mt-2">{{ errors }}</small>
-          </div>
-          <button class="btn btn-primary" :disabled="loading" @click.prevent="onSubmit">
-            Log in
-          </button>
-        </form>
-      </Box>
-    </div>
+  <div class="d-flex justify-content-center align-items-center mt-5">
+    <Box
+      class="box-login mt-5"
+      :title="'log in'"
+      :subtitle="'login for access menu'"
+    >
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input type="email" class="form-control" v-model="form.email">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <invalid-feedback :errors="errors" key-error="email" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" v-model="form.password">
+          <invalid-feedback :errors="errors" key-error="password" />
+        </div>
+        <div class="mb-3"><invalid-feedback :errors="errors" key-error="failed" /></div>
+        <button class="btn btn-primary mt-3" :disabled="loading" @click.prevent="onSubmit">
+          Log in
+        </button>
+      </form>
+    </Box>
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
   data:() =>({
     form: {},
     loading: false,
-    errors: null
+    errors: {}
   }),
   methods: {
     async onSubmit() {
@@ -45,8 +45,7 @@ export default {
           name: 'dashboard'
         })
       } catch (error) {
-        console.log(error.response)
-        this.errors = error.response.data.message
+        this.errors = error.response.data.results.message
         this.loading = false
       }
 

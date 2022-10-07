@@ -38,11 +38,17 @@ export default {
     },
     computed: {
         isLandingPage() {
-            return (
+            if (
                 this.$route.name === "login"
                 || this.$route.name === "absent"
                 || this.$route.name === "notFound"
-            )
+            ) {
+                return true
+            } else if (this.$route.name === null) {
+                return true
+            } else {
+                return false
+            }
         }
     }
 }

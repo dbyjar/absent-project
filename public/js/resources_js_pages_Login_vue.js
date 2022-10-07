@@ -24,7 +24,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       form: {},
       loading: false,
-      errors: null
+      errors: {}
     };
   },
   methods: {
@@ -52,20 +52,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   name: 'dashboard'
                 });
 
-                _context.next = 15;
+                _context.next = 14;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](1);
-                console.log(_context.t0.response);
-                _this.errors = _context.t0.response.data.message;
+                _this.errors = _context.t0.response.data.results.message;
+                _this.loading = false;
+
+              case 14:
                 _this.loading = false;
 
               case 15:
-                _this.loading = false;
-
-              case 16:
               case "end":
                 return _context.stop();
             }
@@ -94,13 +93,9 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    attrs: {
-      id: "main-wrapper"
-    }
-  }, [_c("div", {
-    staticClass: "d-flex justify-content-center align-items-center"
+    staticClass: "d-flex justify-content-center align-items-center mt-5"
   }, [_c("Box", {
-    staticClass: "box-login",
+    staticClass: "box-login mt-5",
     attrs: {
       title: "log in",
       subtitle: "login for access menu"
@@ -135,7 +130,12 @@ var render = function render() {
     attrs: {
       id: "emailHelp"
     }
-  }, [_vm._v("We'll never share your email with anyone else.")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v("We'll never share your email with anyone else.")]), _vm._v(" "), _c("invalid-feedback", {
+    attrs: {
+      errors: _vm.errors,
+      "key-error": "email"
+    }
+  })], 1), _vm._v(" "), _c("div", {
     staticClass: "mb-3"
   }, [_c("label", {
     staticClass: "form-label"
@@ -160,10 +160,20 @@ var render = function render() {
         _vm.$set(_vm.form, "password", $event.target.value);
       }
     }
-  }), _vm._v(" "), _c("small", {
-    staticClass: "text-danger mt-2"
-  }, [_vm._v(_vm._s(_vm.errors))])]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary",
+  }), _vm._v(" "), _c("invalid-feedback", {
+    attrs: {
+      errors: _vm.errors,
+      "key-error": "password"
+    }
+  })], 1), _vm._v(" "), _c("div", {
+    staticClass: "mb-3"
+  }, [_c("invalid-feedback", {
+    attrs: {
+      errors: _vm.errors,
+      "key-error": "failed"
+    }
+  })], 1), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-primary mt-3",
     attrs: {
       disabled: _vm.loading
     },
@@ -173,7 +183,7 @@ var render = function render() {
         return _vm.onSubmit.apply(null, arguments);
       }
     }
-  }, [_vm._v("\n          Log in\n        ")])])])], 1)]);
+  }, [_vm._v("\n        Log in\n      ")])])])], 1);
 };
 
 var staticRenderFns = [];
