@@ -24,19 +24,22 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->messages()], 200);
+            return response()->json(['error' => $validator->messages()], 500);
         }
 
         $user = User::create([
         	'name' => $request->name,
         	'email' => $request->email,
-        	'password' => bcrypt($request->password)
+        	'password' => bcrypt($request->password),
+            'user_role_id' => 1
         ]);
 
         return response()->json([
-            'success' => true,
-            'message' => 'User created successfully',
-            'result' => $user
+            'results' => [
+                'success' => true,
+                'message' => 'User created successfully',
+                'data' => $user
+            ]
         ], Response::HTTP_OK);
     }
  
@@ -50,29 +53,40 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->messages()], 200);
+            return response()->json([
+                'results' => [
+                    'success' => false,
+                    'message' => $validator->messages()
+                ]
+            ], 500);
         }
 
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json([
-                	'success' => false,
-                	'message' => 'Login credentials are invalid.',
+                    'results' => [
+                        'success' => false,
+                        'message' => [ 'failed' => ['Login credentials are invalid.']],
+                    ]
                 ], 400);
             }
         } catch (JWTException $e) {
             return $credentials;
 
             return response()->json([
-                'success' => false,
-                'message' => 'Could not create token.',
+                'results' => [
+                    'success' => false,
+                    'message' => [ 'failed' => ['Could not create token.']],
+                ]
             ], 500);
         }
  	
         return response()->json([
-            'success' => true,
-            'message' => 'Success Login.',
-            'token' => $token,
+            'results' => [
+                'success' => true,
+                'message' => 'Success Login.',
+                'token' => $token,
+            ]
         ]);
     }
  
@@ -90,13 +104,17 @@ class AuthController extends Controller
             JWTAuth::invalidate($request->token);
  
             return response()->json([
-                'success' => true,
-                'message' => 'User has been logged out'
+                'results' => [
+                    'success' => true,
+                    'message' => 'User has been logged out'
+                ]
             ]);
         } catch (JWTException $exception) {
             return response()->json([
-                'success' => false,
-                'message' => 'Sorry, user cannot be logged out'
+                'results' => [
+                    'success' => false,
+                    'message' => 'Sorry, user cannot be logged out'
+                ]
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
@@ -105,6 +123,12 @@ class AuthController extends Controller
     {
         $user = Auth::user() ?? Auth::guard('jwt.verify')->user();
  
-        return response()->json(['user' => $user]);
+        return response()->json([
+            'results' => [
+                'success' => false,
+                'message' => 'Success load data users',
+                'data' => $user
+            ]
+        ]);
     }
 }

@@ -17,7 +17,7 @@ class EmployeeController extends Controller
 
         $user = User::when($keyword, function ($query) use ($keyword) {
             $query->where("name", "like", "%$keyword%");
-        })->paginate($limit);
+        })->with("userRole")->paginate($limit);
  
         return response()->json(['results' => $user]);
     }
@@ -42,14 +42,20 @@ class EmployeeController extends Controller
             
             if (!is_base64($image)) {
                 return response()->json([
-                    "message" => "image is not base64"
+                    "results" => [
+                        "success" => false,
+                        "message" => "image is not base64"
+                    ]
                 ], 500);
             }
 
             $file = base64_decode($image);
         } else {
             return response()->json([
-                "message" => "error type image"
+                "results" => [
+                    "success" => false,
+                    "message" => "error type image"
+                ]
             ], 500);
         }
 
@@ -59,8 +65,13 @@ class EmployeeController extends Controller
         file_put_contents($path, $file);
  
         return response()->json([
-            "success" => true,
-            "image" => $fileName
+            "results" => [
+                "success" => true,
+                "message" => "Success absent",
+                "data" => [
+                    "image" => $fileName
+                ]
+            ]
         ]);
     }
 }
