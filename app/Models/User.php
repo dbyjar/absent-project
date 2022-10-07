@@ -22,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'user_role_id',
     ];
 
     /**
@@ -43,7 +44,11 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public  function  getJWTIdentifier() {
+    public function userRole() {
+      return $this->hasOne('App\Models\UserRoles', 'id', 'user_role_id');
+    }
+
+    public function getJWTIdentifier() {
         return  $this->getKey();
     }
 
