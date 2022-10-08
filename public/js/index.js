@@ -6344,15 +6344,7 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "dark-logo",
     attrs: {
-      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@assets/images/logo-light-icon.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-      alt: "homepage"
-    }
-  })]), _vm._v(" "), _c("span", {
-    staticClass: "logo-text"
-  }, [_c("img", {
-    staticClass: "dark-logo",
-    attrs: {
-      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@assets/images/logo-light-text.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+      src: __webpack_require__(/*! @assets/images/logo-icon.png */ "./resources/js/assets/images/logo-icon.png"),
       alt: "homepage"
     }
   })])])]);
@@ -12117,6 +12109,16 @@ defineJQueryPlugin(Toast);
 
 //# sourceMappingURL=bootstrap.esm.js.map
 
+
+/***/ }),
+
+/***/ "./resources/js/assets/images/logo-icon.png":
+/*!**************************************************!*\
+  !*** ./resources/js/assets/images/logo-icon.png ***!
+  \**************************************************/
+/***/ ((module) => {
+
+module.exports = "/images/logo-icon.png?4c97b9cfde3b17dac0ba324bb309d54e";
 
 /***/ }),
 

@@ -4,11 +4,8 @@
       <div class="navbar-header" data-logobg="skin6">
         <a class="navbar-brand" href="/">
           <b class="logo-icon">
-            <img src="@assets/images/logo-light-icon.png" alt="homepage" class="dark-logo" />
+            <img src="@assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
           </b>
-          <span class="logo-text">
-            <img src="@assets/images/logo-light-text.png" alt="homepage" class="dark-logo" />
-          </span>
         </a>
       </div>
       
