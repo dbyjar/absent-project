@@ -118,10 +118,10 @@ class AuthController extends Controller
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
- 
+
     public function getUser()
     {
-        $user = Auth::user() ?? Auth::guard('jwt.verify')->user();
+        $user = Auth::user();
  
         return response()->json([
             'results' => [
