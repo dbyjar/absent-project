@@ -13,8 +13,11 @@
         class="btn btn-sm btn-secondary"
         @click="onCameraSnap"
       >
-        <i class="mdi mdi-camera-iris"></i> Snap Camera
+        <i class="mdi mdi-camera-iris"></i> Snap camera
       </button>
+      <span class="text-center text-capitalize fw-bold mt-1" v-else>
+        <i class="mdi mdi-account-check"></i> Success scan
+      </span>
     </div>
   </div>
 </template>

@@ -132,26 +132,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 data = new FormData();
                 data.append("image", image);
-                _context.prev = 2;
-                _context.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/employee/absent", data);
 
-              case 5:
-                alert("success"); // this.$route.push()
+                try {
+                  // await axios.post("/api/employee/absent", data)
+                  alert("success"); // this.$route.push()
+                } catch (error) {}
 
-                _context.next = 10;
-                break;
-
-              case 8:
-                _context.prev = 8;
-                _context.t0 = _context["catch"](2);
-
-              case 10:
+              case 3:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[2, 8]]);
+        }, _callee);
       }))();
     }
   }
@@ -206,7 +198,11 @@ var render = function render() {
     }
   }, [_c("i", {
     staticClass: "mdi mdi-camera-iris"
-  }), _vm._v(" Snap Camera\n    ")]) : _vm._e()])]);
+  }), _vm._v(" Snap camera\n    ")]) : _c("span", {
+    staticClass: "text-center text-capitalize fw-bold mt-1"
+  }, [_c("i", {
+    staticClass: "mdi mdi-account-check"
+  }), _vm._v(" Success scan\n    ")])])]);
 };
 
 var staticRenderFns = [];
@@ -234,13 +230,11 @@ var render = function render() {
   return _c("Box", {
     attrs: {
       title: "Absent",
-      subtitle: "Absent with your QR Code and WebCam here"
+      subtitle: "Absent with QR Code and WebCam here"
     }
   }, [_c("div", {
-    staticClass: "row"
-  }, [_c("div", {
-    staticClass: "col-6"
-  }, [_c("div", {
+    staticClass: "d-flex justify-content-around"
+  }, [_c("div", [_c("div", {
     staticClass: "card-body d-flex flex-column"
   }, [_c("img", {
     staticClass: "result",
@@ -252,9 +246,7 @@ var render = function render() {
     staticClass: "text-center text-capitalize fw-bold mt-3"
   }, [_c("i", {
     staticClass: "mdi mdi-qrcode-scan"
-  }), _vm._v(" Scan Here\n                ")])])]), _vm._v(" "), _c("div", {
-    staticClass: "col-6"
-  }, [_c("camera", {
+  }), _vm._v(" Scan me\n                ")])])]), _vm._v(" "), _c("div", [_c("camera", {
     ref: "camera",
     on: {
       snap: _vm.onCameraSnap

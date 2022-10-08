@@ -26,6 +26,11 @@ const routes = [
     path: '/login',
     component: () => import('@pages/Login.vue')
   },
+  {
+    name: 'scanQRCode',
+    path: '/scan',
+    component: () => import('@pages/ScanQRCode.vue')
+  },
 ]
 
 const router = new VueRouter({

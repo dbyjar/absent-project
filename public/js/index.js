@@ -6834,6 +6834,12 @@ var routes = [{
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Login.vue */ "./resources/js/pages/Login.vue"));
   }
+}, {
+  name: 'scanQRCode',
+  path: '/scan',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_ScanQRCode_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/ScanQRCode.vue */ "./resources/js/pages/ScanQRCode.vue"));
+  }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: "history",
@@ -79035,7 +79041,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_404_vue":1,"resources_js_pages_Dashboard_vue":1,"resources_js_pages_Absent_vue":1,"resources_js_pages_Login_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_404_vue":1,"resources_js_pages_Dashboard_vue":1,"resources_js_pages_Absent_vue":1,"resources_js_pages_Login_vue":1,"resources_js_pages_ScanQRCode_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
