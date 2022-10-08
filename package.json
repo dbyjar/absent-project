@@ -31,6 +31,7 @@
         "js-cookie": "^3.0.1",
         "moment": "^2.29.4",
         "portal-vue": "^2.1.7",
+        "vue-barcode-reader": "0.0.3",
         "vuejs-paginate": "^2.1.0",
         "webcamjs": "^1.0.26"
     }
