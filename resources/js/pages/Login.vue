@@ -30,6 +30,13 @@
 import Cookies from 'js-cookie'
 
 export default {
+  mounted() {
+    if (this.$route.query.msg) {
+      this.errors = {
+        failed: [this.$route.query.msg]
+      }
+    }
+  },
   data:() =>({
     form: {},
     loading: false,

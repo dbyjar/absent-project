@@ -6623,23 +6623,39 @@ new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
     };
   },
   mounted: function mounted() {
-    this.getUser();
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _this.getUser();
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   },
   methods: {
     getUser: function getUser() {
-      var _this = this;
+      var _this2 = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         var _yield$axios$get$data;
 
         var token, _ref, results;
 
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
                 token = js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].get("absentSession");
-                _context.next = 3;
+                _context2.next = 3;
                 return axios.get("/api/get_user", {
                   headers: {
                     'Authorization': "Bearer ".concat(token)
@@ -6647,40 +6663,66 @@ new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
                 });
 
               case 3:
-                _context.t1 = _yield$axios$get$data = _context.sent.data;
-                _context.t0 = _context.t1 !== null;
+                _context2.t1 = _yield$axios$get$data = _context2.sent.data;
+                _context2.t0 = _context2.t1 !== null;
 
-                if (!_context.t0) {
-                  _context.next = 7;
+                if (!_context2.t0) {
+                  _context2.next = 7;
                   break;
                 }
 
-                _context.t0 = _yield$axios$get$data !== void 0;
+                _context2.t0 = _yield$axios$get$data !== void 0;
 
               case 7:
-                if (!_context.t0) {
-                  _context.next = 11;
+                if (!_context2.t0) {
+                  _context2.next = 11;
                   break;
                 }
 
-                _context.t2 = _yield$axios$get$data;
-                _context.next = 12;
+                _context2.t2 = _yield$axios$get$data;
+                _context2.next = 12;
                 break;
 
               case 11:
-                _context.t2 = {};
+                _context2.t2 = {};
 
               case 12:
-                _ref = _context.t2;
+                _ref = _context2.t2;
                 results = _ref.results;
-                _this.auth = results.data;
 
-              case 15:
+                if (!(results.message === "Token is Invalid" || results.message === "Token is Expired" || results.message === "Authorization Token not found")) {
+                  _context2.next = 20;
+                  break;
+                }
+
+                if (!(_this2.$route.name !== "login")) {
+                  _context2.next = 19;
+                  break;
+                }
+
+                _context2.next = 18;
+                return js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].remove("absentSession");
+
+              case 18:
+                return _context2.abrupt("return", _this2.$router.push({
+                  name: "login",
+                  query: {
+                    msg: results.message
+                  }
+                }));
+
+              case 19:
+                return _context2.abrupt("return");
+
+              case 20:
+                _this2.auth = results.data;
+
+              case 21:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee);
+        }, _callee2);
       }))();
     }
   }

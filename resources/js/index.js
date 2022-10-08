@@ -30,8 +30,8 @@ new Vue({
     data: () => ({
         auth: {},
     }),
-    mounted() {
-        this.getUser()
+    async mounted() {
+        await this.getUser()
     },
     methods: {
         async getUser() {
@@ -44,6 +44,24 @@ new Vue({
                     }
                 })
             ).data ?? {}
+
+            if (
+                results.message === "Token is Invalid"
+                || results.message === "Token is Expired"
+                || results.message === "Authorization Token not found"
+            ) {
+                if (this.$route.name !== "login") {
+                    await Cookies.remove("absentSession")
+                    return this.$router.push({
+                        name: "login",
+                        query: {
+                            msg: results.message
+                        }
+                    });
+                }
+
+                return;
+            }
 
             this.auth = results.data
         }

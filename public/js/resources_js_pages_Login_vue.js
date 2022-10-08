@@ -22,6 +22,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {
+    if (this.$route.query.msg) {
+      this.errors = {
+        failed: [this.$route.query.msg]
+      };
+    }
+  },
   data: function data() {
     return {
       form: {},

@@ -46,7 +46,7 @@ export default {
 
 <style scoped>
 .result {
-    max-width: 420px;
+    max-width: 560px;
     border-radius: 15px;
     align-self: center;
 }
