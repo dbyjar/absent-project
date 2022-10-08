@@ -1,19 +1,21 @@
 <template>
-  <div class="card-body">
+  <div class="card-body d-flex flex-column justify-content-center">
     <div class="d-flex mb-3 justify-content-center">
-      <div id="camera"></div>
+      <div id="camera" ref="camera"></div>
       <div id="result" v-if="base64URI">
-        <img :src="base64URI" alt="absent">
+        <img class="result" :src="base64URI" alt="absent">
       </div>
     </div>
-    <button
-      v-if="!result"
-      type="button"
-      class="btn btn-sm btn-primary"
-      @click="onCameraSnap"
-    >
-      Snap Camera
-    </button>
+    <div class="d-flex justify-content-center">
+      <button
+        v-if="!result"
+        type="button"
+        class="btn btn-sm btn-secondary"
+        @click="onCameraSnap"
+      >
+        Click for Save
+      </button>
+    </div>
   </div>
 </template>
 
@@ -24,11 +26,11 @@ export default {
   props: {
     width: {
       type: Number,
-      default: 320,
+      default: 560,
     },
     height: {
       type: Number,
-      default: 240,
+      default: 420,
     },
   },
   created() {
@@ -45,6 +47,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       Webcam.attach('#camera');
+      $("video").css("borderRadius", "15px")
     })
   },
   methods: {
@@ -53,13 +56,24 @@ export default {
       this.result = true
 
       Webcam.snap(data_uri => base64URI = data_uri);
+      this.resetCam()
 
       this.base64URI = base64URI
       this.$emit("snap", this.base64URI)
+    },
+    resetCam() {
+      Webcam.reset();
+      $(this.$refs.camera).css("display", "none") // make display none
     }
   },
   destroyed() {
-    Webcam.reset();
+    this.resetCam()
   }
 }
 </script>
+
+<style scoped>
+.result {
+  border-radius: 15px;
+}
+</style>
