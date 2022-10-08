@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-6">
                 <div class="card-body d-flex flex-column">
-                    <img class="result" src="@assets/images/users/4.jpg" alt="qr">
+                    <img class="result" src="@assets/images/qrcode.png" alt="qrcode">
                     <span class="text-center text-capitalize fw-bold mt-3">
                         scan here
                     </span>
@@ -46,8 +46,8 @@ export default {
 
 <style scoped>
 .result {
-    max-width: 560px;
-    border-radius: 15px;
+    min-height: 420px;
     align-self: center;
+    border-radius: 15px;
 }
 </style>
