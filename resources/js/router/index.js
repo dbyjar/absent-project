@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Cookies from 'js-cookie'
+import { getDeviceType } from '../helpers'
 
 Vue.use(VueRouter)
 
@@ -33,25 +34,26 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  const deviceType = getDeviceType()
   const isAuthenticated = Cookies.get("absentSession") ?? null
 
-  if (
-    to.name === 'login'
-    || to.name === 'absent'
-  ) {
+  if (to.name === "notFound") return next()
+
+  if (to.name === 'login' || to.name === 'absent') {
     if (to.name === 'login' && isAuthenticated) {
       return next({ name: 'dashboard' })
     }
 
-    return next()
-  }
+    if (to.name === 'absent') {
+      if (deviceType !== "desktop") {
+        return next({ name: "notFound" })
+      }
 
-  if (
-    (
-      to.name !== 'login'
-      || to.name !== 'absent'
-    ) && !isAuthenticated
-  ) {
+      return next()
+    }
+
+    return next()
+  } else if (!isAuthenticated) {
     return next({ name: 'login' })
   } else {
     return next()

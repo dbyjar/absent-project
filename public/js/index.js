@@ -6344,7 +6344,7 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "dark-logo",
     attrs: {
-      src: __webpack_require__(/*! @assets/images/logo-light-icon.png */ "./resources/js/assets/images/logo-light-icon.png"),
+      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@assets/images/logo-light-icon.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
       alt: "homepage"
     }
   })]), _vm._v(" "), _c("span", {
@@ -6352,7 +6352,7 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "dark-logo",
     attrs: {
-      src: __webpack_require__(/*! @assets/images/logo-light-text.png */ "./resources/js/assets/images/logo-light-text.png"),
+      src: __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module '@assets/images/logo-light-text.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
       alt: "homepage"
     }
   })])])]);
@@ -6569,6 +6569,63 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./resources/js/helpers.js":
+/*!*********************************!*\
+  !*** ./resources/js/helpers.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getDeviceType": () => (/* binding */ getDeviceType)
+/* harmony export */ });
+// import Cookies from 'js-cookie';
+
+/** 
+ * check device type for page Absent
+ * @return "tablet"|"mobile"|"desktop"
+ */
+var getDeviceType = function getDeviceType() {
+  var ua = navigator.userAgent;
+
+  if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    return "tablet";
+  } else if (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
+    return "mobile";
+  } else {
+    return "desktop";
+  }
+}; // export const checkAuth = async () => {
+//   const token = Cookies.get("absentSession")
+//   const { results } = (
+//     await axios.get(`/api/get_user`, {
+//       headers: {
+//         'Authorization': `Bearer ${token}`
+//       }
+//     })
+//   ).data ?? {}
+//   if (
+//       results.message === "Token is Invalid"
+//       || results.message === "Token is Expired"
+//       || results.message === "Authorization Token not found"
+//   ) {
+//       // if (this.$route.name !== "login") {
+//       //     await Cookies.remove("absentSession")
+//       //     return this.$router.push({
+//       //         name: "login",
+//       //         query: {
+//       //             msg: results.message
+//       //         }
+//       //     });
+//       // }
+//       return false;
+//   }
+//   return true;
+// }
+
+/***/ }),
+
 /***/ "./resources/js/index.js":
 /*!*******************************!*\
   !*** ./resources/js/index.js ***!
@@ -6689,35 +6746,9 @@ new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
               case 12:
                 _ref = _context2.t2;
                 results = _ref.results;
+                _this2.auth = results === null || results === void 0 ? void 0 : results.data;
 
-                if (!(results.message === "Token is Invalid" || results.message === "Token is Expired" || results.message === "Authorization Token not found")) {
-                  _context2.next = 20;
-                  break;
-                }
-
-                if (!(_this2.$route.name !== "login")) {
-                  _context2.next = 19;
-                  break;
-                }
-
-                _context2.next = 18;
-                return js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].remove("absentSession");
-
-              case 18:
-                return _context2.abrupt("return", _this2.$router.push({
-                  name: "login",
-                  query: {
-                    msg: results.message
-                  }
-                }));
-
-              case 19:
-                return _context2.abrupt("return");
-
-              case 20:
-                _this2.auth = results.data;
-
-              case 21:
+              case 15:
               case "end":
                 return _context2.stop();
             }
@@ -6774,13 +6805,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers */ "./resources/js/helpers.js");
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
 var routes = [{
   path: "*",
   name: "notFound",
@@ -6806,14 +6839,16 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Login.vue */ "./resources/js/pages/Login.vue"));
   }
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
   mode: "history",
   routes: routes
 });
 router.beforeEach(function (to, from, next) {
   var _Cookies$get;
 
+  var deviceType = (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getDeviceType)();
   var isAuthenticated = (_Cookies$get = js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].get("absentSession")) !== null && _Cookies$get !== void 0 ? _Cookies$get : null;
+  if (to.name === "notFound") return next();
 
   if (to.name === 'login' || to.name === 'absent') {
     if (to.name === 'login' && isAuthenticated) {
@@ -6822,10 +6857,18 @@ router.beforeEach(function (to, from, next) {
       });
     }
 
-    return next();
-  }
+    if (to.name === 'absent') {
+      if (deviceType !== "desktop") {
+        return next({
+          name: "notFound"
+        });
+      }
 
-  if ((to.name !== 'login' || to.name !== 'absent') && !isAuthenticated) {
+      return next();
+    }
+
+    return next();
+  } else if (!isAuthenticated) {
     return next({
       name: 'login'
     });
@@ -12074,26 +12117,6 @@ defineJQueryPlugin(Toast);
 
 //# sourceMappingURL=bootstrap.esm.js.map
 
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/logo-light-icon.png":
-/*!********************************************************!*\
-  !*** ./resources/js/assets/images/logo-light-icon.png ***!
-  \********************************************************/
-/***/ ((module) => {
-
-module.exports = "/images/logo-light-icon.png?4c97b9cfde3b17dac0ba324bb309d54e";
-
-/***/ }),
-
-/***/ "./resources/js/assets/images/logo-light-text.png":
-/*!********************************************************!*\
-  !*** ./resources/js/assets/images/logo-light-text.png ***!
-  \********************************************************/
-/***/ ((module) => {
-
-module.exports = "/images/logo-light-text.png?da818cb6c4106a21e97b98352d3cb93d";
 
 /***/ }),
 

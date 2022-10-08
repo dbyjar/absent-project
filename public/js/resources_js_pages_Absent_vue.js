@@ -242,8 +242,8 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "result",
     attrs: {
-      src: __webpack_require__(/*! @assets/images/users/4.jpg */ "./resources/js/assets/images/users/4.jpg"),
-      alt: "qr"
+      src: __webpack_require__(/*! @assets/images/qrcode.png */ "./resources/js/assets/images/qrcode.png"),
+      alt: "qrcode"
     }
   }), _vm._v(" "), _c("span", {
     staticClass: "text-center text-capitalize fw-bold mt-3"
@@ -303,7 +303,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.result[data-v-39fdf182] {\n    max-width: 560px;\n    border-radius: 15px;\n    align-self: center;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.result[data-v-39fdf182] {\n    max-height: 420px;\n    align-self: center;\n    border-radius: 15px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -386,13 +386,13 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/users/4.jpg":
-/*!************************************************!*\
-  !*** ./resources/js/assets/images/users/4.jpg ***!
-  \************************************************/
+/***/ "./resources/js/assets/images/qrcode.png":
+/*!***********************************************!*\
+  !*** ./resources/js/assets/images/qrcode.png ***!
+  \***********************************************/
 /***/ ((module) => {
 
-module.exports = "/images/4.jpg?128dd6c1580e0c9d2212a1f1fef11453";
+module.exports = "/images/qrcode.png?9a681bdd5a88b9836cee73611e0a870d";
 
 /***/ }),
 
