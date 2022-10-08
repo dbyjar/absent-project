@@ -33,9 +33,14 @@ export default {
         icon: "mdi mdi-view-dashboard",
       },
       {
-        name: "absent",
-        routeName: "absent",
-        icon: "mdi mdi-account",
+        name: "users",
+        routeName: "blank",
+        icon: "mdi mdi-account-multiple",
+      },
+      {
+        name: "shift & salary",
+        routeName: "blank",
+        icon: "mdi mdi-clock-end",
       },
     ]
   }),

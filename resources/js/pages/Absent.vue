@@ -1,19 +1,19 @@
 <template>
     <Box
         :title="'Absent'"
-        :subtitle="'Please absent here with QR code or Camera'"
+        :subtitle="'Absent with your QR Code and WebCam here'"
     >
         <div class="row">
             <div class="col-6">
                 <div class="card-body d-flex flex-column">
                     <img class="result" src="@assets/images/qrcode.png" alt="qrcode">
                     <span class="text-center text-capitalize fw-bold mt-3">
-                        scan here
+                        <i class="mdi mdi-qrcode-scan"></i> Scan Here
                     </span>
                 </div>
             </div>
             <div class="col-6">
-                <camera @snap="onCameraSnap" />
+                <camera ref="camera" @snap="onCameraSnap" />
             </div>
         </div>
     </Box>
@@ -36,6 +36,7 @@ export default {
                 await axios.post("/api/employee/absent", data)
 
                 alert("success")
+                // this.$route.push()
             } catch (error) {
                 
             }

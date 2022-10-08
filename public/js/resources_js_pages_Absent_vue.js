@@ -68,7 +68,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return base64URI = data_uri;
                 });
 
-                _this.resetCam();
+                _this.destroyCamera();
 
                 _this.base64URI = base64URI;
 
@@ -82,13 +82,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    resetCam: function resetCam() {
+    destroyCamera: function destroyCamera() {
       webcamjs__WEBPACK_IMPORTED_MODULE_0___default().reset();
       $(this.$refs.camera).css("display", "none"); // make display none
     }
   },
   destroyed: function destroyed() {
-    this.resetCam();
+    this.destroyCamera();
   }
 });
 
@@ -137,7 +137,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/employee/absent", data);
 
               case 5:
-                alert("success");
+                alert("success"); // this.$route.push()
+
                 _context.next = 10;
                 break;
 
@@ -203,7 +204,9 @@ var render = function render() {
     on: {
       click: _vm.onCameraSnap
     }
-  }, [_vm._v("\n      Click for Save\n    ")]) : _vm._e()])]);
+  }, [_c("i", {
+    staticClass: "mdi mdi-camera-iris"
+  }), _vm._v(" Snap Camera\n    ")]) : _vm._e()])]);
 };
 
 var staticRenderFns = [];
@@ -231,7 +234,7 @@ var render = function render() {
   return _c("Box", {
     attrs: {
       title: "Absent",
-      subtitle: "Please absent here with QR code or Camera"
+      subtitle: "Absent with your QR Code and WebCam here"
     }
   }, [_c("div", {
     staticClass: "row"
@@ -247,9 +250,12 @@ var render = function render() {
     }
   }), _vm._v(" "), _c("span", {
     staticClass: "text-center text-capitalize fw-bold mt-3"
-  }, [_vm._v("\n                    scan here\n                ")])])]), _vm._v(" "), _c("div", {
+  }, [_c("i", {
+    staticClass: "mdi mdi-qrcode-scan"
+  }), _vm._v(" Scan Here\n                ")])])]), _vm._v(" "), _c("div", {
     staticClass: "col-6"
   }, [_c("camera", {
+    ref: "camera",
     on: {
       snap: _vm.onCameraSnap
     }
@@ -303,7 +309,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.result[data-v-39fdf182] {\n    max-height: 420px;\n    align-self: center;\n    border-radius: 15px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.result[data-v-39fdf182] {\n    min-height: 420px;\n    align-self: center;\n    border-radius: 15px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

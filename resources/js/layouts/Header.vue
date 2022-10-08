@@ -2,7 +2,7 @@
   <header class="topbar" data-navbarbg="skin6">
     <nav class="navbar top-navbar navbar-expand-md navbar-light">
       <div class="navbar-header" data-logobg="skin6">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand justify-content-center" href="javascript:;">
           <b class="logo-icon">
             <img src="@assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
           </b>
@@ -19,10 +19,10 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end animated" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="javascript:void(0)">
-                <i class="far fa-fw fa-id-badge"></i> My Profile
+                <i class="mdi mdi-account"></i> My Profile
               </a>
               <button class="dropdown-item" @click="onLogoutClick">
-                <i class="fas fa-fw fa-hand-point-left"></i> Logout
+                <i class="mdi mdi-logout"></i> Logout
               </button>
             </ul>
           </li>

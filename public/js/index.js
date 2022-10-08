@@ -5483,7 +5483,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (!this.withoutOptionColumn) {
         var optionsColumn = {
-          name: "opsi",
+          name: "action",
           "class": "text-end"
         };
         this.tableColumns.push(optionsColumn);
@@ -5784,9 +5784,13 @@ __webpack_require__.r(__webpack_exports__);
         routeName: "dashboard",
         icon: "mdi mdi-view-dashboard"
       }, {
-        name: "absent",
-        routeName: "absent",
-        icon: "mdi mdi-account"
+        name: "users",
+        routeName: "blank",
+        icon: "mdi mdi-account-multiple"
+      }, {
+        name: "shift & salary",
+        routeName: "blank",
+        icon: "mdi mdi-clock-end"
       }]
     };
   }
@@ -6004,7 +6008,7 @@ var render = function render() {
     staticClass: "text-center p-3"
   }, [_c("i", {
     staticClass: "fas fa-spin fa-spinner fa-fw"
-  }), _vm._v(" memuat ...\n      ")]) : !_vm.table.data.length && !_vm.isLoading ? _c("div", [_c("base-table-column", [_vm._v("data tidak ada")])], 1) : _vm._e()], 1)]), _vm._v(" "), _c("div", {
+  }), _vm._v(" loading ...\n      ")]) : !_vm.table.data.length && !_vm.isLoading ? _c("div", [_c("base-table-column", [_vm._v("data not found")])], 1) : _vm._e()], 1)]), _vm._v(" "), _c("div", {
     staticClass: "d-flex justify-content-between"
   }, [_c("div", [_c("span", {
     staticClass: "fw-bold"
@@ -6321,7 +6325,7 @@ var render = function render() {
       click: _vm.onLogoutClick
     }
   }, [_c("i", {
-    staticClass: "fas fa-fw fa-hand-point-left"
+    staticClass: "mdi mdi-logout"
   }), _vm._v(" Logout\n            ")])])])])])])]);
 };
 
@@ -6335,9 +6339,9 @@ var staticRenderFns = [function () {
       "data-logobg": "skin6"
     }
   }, [_c("a", {
-    staticClass: "navbar-brand",
+    staticClass: "navbar-brand justify-content-center",
     attrs: {
-      href: "/"
+      href: "javascript:;"
     }
   }, [_c("b", {
     staticClass: "logo-icon"
@@ -6358,7 +6362,7 @@ var staticRenderFns = [function () {
       href: "javascript:void(0)"
     }
   }, [_c("i", {
-    staticClass: "far fa-fw fa-id-badge"
+    staticClass: "mdi mdi-account"
   }), _vm._v(" My Profile\n            ")]);
 }];
 render._withStripped = true;

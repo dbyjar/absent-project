@@ -13,7 +13,7 @@
         class="btn btn-sm btn-secondary"
         @click="onCameraSnap"
       >
-        Click for Save
+        <i class="mdi mdi-camera-iris"></i> Snap Camera
       </button>
     </div>
   </div>
@@ -56,18 +56,18 @@ export default {
       this.result = true
 
       Webcam.snap(data_uri => base64URI = data_uri);
-      this.resetCam()
+      this.destroyCamera()
 
       this.base64URI = base64URI
       this.$emit("snap", this.base64URI)
     },
-    resetCam() {
+    destroyCamera() {
       Webcam.reset();
       $(this.$refs.camera).css("display", "none") // make display none
     }
   },
   destroyed() {
-    this.resetCam()
+    this.destroyCamera()
   }
 }
 </script>

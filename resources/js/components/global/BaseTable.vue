@@ -38,11 +38,11 @@
         </div>
 
         <div class="text-center p-3" v-else-if="isLoading">
-          <i class="fas fa-spin fa-spinner fa-fw"></i> memuat ...
+          <i class="fas fa-spin fa-spinner fa-fw"></i> loading ...
         </div>
 
         <div v-else-if="!table.data.length && !isLoading">
-          <base-table-column>data tidak ada</base-table-column>
+          <base-table-column>data not found</base-table-column>
         </div>
       </div>
     </div>
@@ -132,7 +132,7 @@ export default {
 
       if (!this.withoutOptionColumn) {
         const optionsColumn = {
-          name: "opsi",
+          name: "action",
           class: "text-end"
         }
 
