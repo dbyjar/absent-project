@@ -34,7 +34,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var results;
+        var _yield$axios$post$dat, _ref, results;
+
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -45,33 +46,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios.post("/api/login", _this.form);
 
               case 4:
-                results = _context.sent.data.results;
-                js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].set("absentSession", results.token, {
-                  expires: 1
-                });
+                _context.t1 = _yield$axios$post$dat = _context.sent.data;
+                _context.t0 = _context.t1 !== null;
 
-                _this.$router.push({
-                  name: 'dashboard'
-                });
+                if (!_context.t0) {
+                  _context.next = 8;
+                  break;
+                }
 
+                _context.t0 = _yield$axios$post$dat !== void 0;
+
+              case 8:
+                if (!_context.t0) {
+                  _context.next = 12;
+                  break;
+                }
+
+                _context.t2 = _yield$axios$post$dat;
                 _context.next = 13;
                 break;
 
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context["catch"](1);
-                _this.errors = _context.t0.response.data.results.message;
-                _this.loading = false;
+              case 12:
+                _context.t2 = {};
 
               case 13:
+                _ref = _context.t2;
+                results = _ref.results;
+                js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].set("absentSession", results.token, {
+                  expires: 1
+                });
+                window.location.href = "/";
+                _context.next = 23;
+                break;
+
+              case 19:
+                _context.prev = 19;
+                _context.t3 = _context["catch"](1);
+                _this.errors = _context.t3.response.data.results.message;
                 _this.loading = false;
 
-              case 14:
+              case 23:
+                _this.loading = false;
+
+              case 24:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 9]]);
+        }, _callee, null, [[1, 19]]);
       }))();
     }
   }

@@ -40,12 +40,15 @@ export default {
       this.loading = true
       
       try {
-        const { results } = (await axios.post(`/api/login`, this.form)).data
+        const { results } = (
+          await axios.post(`/api/login`, this.form)
+        ).data ?? {}
         
-        Cookies.set("absentSession", results.token, { expires: 1 })
-        this.$router.push({
-          name: 'dashboard'
+        Cookies.set("absentSession", results.token, {
+          expires: 1
         })
+        
+        window.location.href = "/"
       } catch (error) {
         this.errors = error.response.data.results.message
         this.loading = false

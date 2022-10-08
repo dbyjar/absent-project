@@ -17,16 +17,16 @@
         <ul class="navbar-nav float-end">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <span class="text-capitalize fs-6 me-3">User</span>
+              <span class="text-capitalize fs-6 me-3">{{ user.name }}</span>
               <img src="@assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31">
             </a>
             <ul class="dropdown-menu dropdown-menu-end animated" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="javascript:void(0)">
                 <i class="far fa-fw fa-id-badge"></i> My Profile
               </a>
-              <a class="dropdown-item" href="javascript:void(0)">
+              <button class="dropdown-item" @click="onLogoutClick">
                 <i class="fas fa-fw fa-hand-point-left"></i> Logout
-              </a>
+              </button>
             </ul>
           </li>
         </ul>
@@ -34,3 +34,27 @@
     </nav>
   </header>
 </template>
+
+<script>
+import Cookies from 'js-cookie'
+
+export default {
+  computed: {
+    user() {
+      return this.$root.auth
+    }
+  },
+  methods: {
+    async onLogoutClick() {
+      const token = Cookies.get("absentSession")
+
+      await axios.post(`/api/logout`, { token })
+
+      Cookies.remove("absentSession")
+      this.$router.push({
+        name: "login"
+      })
+    }
+  }
+}
+</script>

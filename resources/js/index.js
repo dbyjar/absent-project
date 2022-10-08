@@ -5,6 +5,7 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Vue from 'vue';
+import Cookies from 'js-cookie';
 import PortalVue from 'portal-vue'
 import router from './router/index'
 import { global } from './mixins'
@@ -27,8 +28,26 @@ new Vue({
     router,
     render: root => root(App),
     data: () => ({
-        baseURL: 'localhost'
-    })
+        auth: {},
+    }),
+    mounted() {
+        this.getUser()
+    },
+    methods: {
+        async getUser() {
+            const token = Cookies.get("absentSession")
+
+            const { results } = (
+                await axios.get(`/api/get_user`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+            ).data ?? {}
+
+            this.auth = results.data
+        }
+    }
 }).$mount("#app");
 
 // import Echo from 'laravel-echo';
