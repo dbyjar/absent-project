@@ -16,3 +16,19 @@
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.error-box {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: relative!important;
+
+  .error-title {
+    font-size: 180px !important;
+    font-weight: 900;
+    line-height: 210px;
+    text-shadow: 4px 4px 0 #fff, 6px 6px 0 #11142d;
+  }
+}
+</style>

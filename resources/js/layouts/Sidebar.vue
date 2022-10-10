@@ -34,7 +34,7 @@ export default {
       },
       {
         name: "users",
-        routeName: "blank",
+        routeName: "users",
         icon: "mdi mdi-account-multiple",
       },
       {

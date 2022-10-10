@@ -6,7 +6,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 d-flex align-items-center">
                             <li class="breadcrumb-item">
-                                <a href="/" class="link">
+                                <a href="javascript:;" class="link" @click="toHome">
                                     <i class="mdi mdi-home-outline fs-4"></i>
                                 </a>
                             </li>
@@ -49,6 +49,16 @@ export default {
             } else {
                 return false
             }
+        }
+    },
+    methods: {
+        toHome() {
+            if (this.$route.name !== 'dashboard') {
+                this.$router.push({
+                    name: 'dashboard'
+                })
+            }
+
         }
     }
 }
