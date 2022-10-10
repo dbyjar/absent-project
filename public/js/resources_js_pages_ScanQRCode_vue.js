@@ -17878,11 +17878,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_barcode_reader__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-barcode-reader */ "./node_modules/vue-barcode-reader/src/index.js");
+/* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+/* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pusher_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_barcode_reader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-barcode-reader */ "./node_modules/vue-barcode-reader/src/index.js");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    StreamBarcodeReader: vue_barcode_reader__WEBPACK_IMPORTED_MODULE_0__.StreamBarcodeReader
+    StreamBarcodeReader: vue_barcode_reader__WEBPACK_IMPORTED_MODULE_1__.StreamBarcodeReader
+  },
+  data: function data() {
+    return {
+      pusher: new (pusher_js__WEBPACK_IMPORTED_MODULE_0___default())('a8fc0c595a781be86e6b', {
+        cluster: 'ap1'
+      })
+    };
+  },
+  mounted: function mounted() {
+    var channel = this.pusher.subscribe("scan-absent");
+    channel.bind(".scan-absent-done", function (val) {
+      console.log("pusher: ", val);
+    });
   },
   methods: {
     onDecode: function onDecode(val) {
