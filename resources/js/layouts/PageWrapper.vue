@@ -10,13 +10,31 @@
                                     <i class="mdi mdi-home-outline fs-4"></i>
                                 </a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">
-                                <span class="text-capitalize">{{ $route.name }}</span>
+                            <li
+                                @click="toPage"
+                                :class="[
+                                    'breadcrumb-item', {
+                                        'active': $route.meta.pageAct === '',
+                                        'breadcrumb-page': $route.meta.pageAct,
+                                        }
+                                    ]"
+                                aria-current="page"
+                            >
+                                <span class="text-capitalize">{{ $route.meta.menuTranslate }}</span>
+                            </li>
+                            <li :class="[
+                                    'breadcrumb-item', {
+                                        'active': $route.meta.pageAct
+                                        }
+                                    ]"
+                                aria-current="page"
+                            >
+                                <span class="text-capitalize">{{ $route.meta.pageAct }}</span>
                             </li>
                         </ol>
                     </nav>
                     <h1 class="mb-0 fw-bold">
-                        <span class="text-capitalize">{{ $route.name }}</span>
+                        <span class="text-capitalize">{{ $route.meta.pageAct }} {{ $route.meta.menuTranslate }}</span>
                     </h1> 
                 </div>
                 <div class="col-6 d-flex justify-content-end">
@@ -58,8 +76,20 @@ export default {
                     name: 'dashboard'
                 })
             }
+        },
+        toPage() {
+            if (this.$route.meta.pageAct === "") return;
 
+            this.$router.push({
+                name: this.$route.meta.origin
+            })
         }
     }
 }
 </script>
+
+<style scoped>
+.breadcrumb-page {
+    cursor: pointer;
+}
+</style>

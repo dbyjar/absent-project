@@ -23,6 +23,9 @@ class User extends Authenticatable implements JWTSubject
         'email',
         'password',
         'user_role_id',
+        'job_id',
+        'address',
+        'phone',
     ];
 
     /**
@@ -46,6 +49,10 @@ class User extends Authenticatable implements JWTSubject
 
     public function userRole() {
       return $this->hasOne('App\Models\UserRoles', 'id', 'user_role_id');
+    }
+
+    public function job() {
+      return $this->hasOne('App\Models\Job', 'id', 'job_id');
     }
 
     public function getJWTIdentifier() {

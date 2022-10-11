@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\EmployeeController;
+use App\Http\Controllers\API\JobController;
+use App\Http\Controllers\API\ShiftAndSalaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +31,16 @@ Route::prefix('employee')->group(function () {
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('get_user', [AuthController::class, 'getUser']);
+
+    Route::prefix('job')->group(function () {
+        Route::get('/', [JobController::class, 'index']);
+    });
+
+    Route::prefix('shift_and_salary')->group(function () {
+        Route::get('/', [ShiftAndSalaryController::class, 'index']);
+        Route::post('/', [ShiftAndSalaryController::class, 'store']);
+        Route::delete('/{id}', [ShiftAndSalaryController::class, 'destroy']);
+        Route::get('/{id}', [ShiftAndSalaryController::class, 'show']);
+        Route::put('/{id}', [ShiftAndSalaryController::class, 'update']);
+    });
 });

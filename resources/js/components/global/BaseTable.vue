@@ -41,8 +41,8 @@
           <i class="fas fa-spin fa-spinner fa-fw"></i> loading ...
         </div>
 
-        <div v-else-if="!table.data.length && !isLoading">
-          <base-table-column>data not found</base-table-column>
+        <div class="text-center p-3" v-else-if="!table.data.length && !isLoading">
+          <div>data is empty</div>
         </div>
       </div>
     </div>
@@ -117,7 +117,11 @@ export default {
       
       try {
         const { results } = (
-          await axios.get(`/api/${this.config.namespace}?${params}`)
+          await axios.get(`/api/${this.config.namespace}?${params}`, {
+            headers: {
+              'Authorization': `Bearer ${this.$root.token}`
+            }
+          })
         ).data ?? {}
 
         this.table = results

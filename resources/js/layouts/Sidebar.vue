@@ -38,8 +38,13 @@ export default {
         icon: "mdi mdi-account-multiple",
       },
       {
+        name: "jobs",
+        routeName: "jobs",
+        icon: "mdi mdi-account-star-variant",
+      },
+      {
         name: "shift & salary",
-        routeName: "blank",
+        routeName: "shift-and-salary",
         icon: "mdi mdi-clock-end",
       },
     ]

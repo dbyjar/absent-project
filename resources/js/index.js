@@ -11,7 +11,6 @@ import PortalVue from 'portal-vue'
 import router from './router/index'
 import { global } from './mixins'
 import App from './layouts/Index.vue'
-import Echo from 'laravel-echo';
 
 Vue.mixin(global);
 Vue.use(PortalVue)
@@ -26,35 +25,33 @@ files
         Vue.component(name, component)
     })
 
+const token = Cookies.get("absentSession") ?? ""
+
 new Vue({
     router,
     render: root => root(App),
     data: () => ({
         auth: {},
+        token: token,
+        pusher: new Pusher(process.env.MIX_PUSHER_APP_KEY, {
+            cluster: process.env.MIX_PUSHER_APP_CLUSTER
+        }),
+        headersRequestAPI: {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
     }),
     async mounted() {
         await this.getUser()
     },
     methods: {
         async getUser() {
-            const token = Cookies.get("absentSession")
-
             const { results } = (
-                await axios.get(`/api/get_user`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                })
+                await axios.get(`/api/get_user`, this.headersRequestAPI)
             ).data ?? {}
 
             this.auth = results?.data
         }
     }
 }).$mount("#app");
-
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: process.env.MIX_PUSHER_APP_KEY,
-    cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    forceTLS: true
-});

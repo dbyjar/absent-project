@@ -6,28 +6,24 @@
 </template>
 
 <script>
-import Pusher from 'pusher-js';
 import { StreamBarcodeReader } from "vue-barcode-reader";
 
 export default {
   components: { StreamBarcodeReader },
-  data:() => ({
-    pusher: new Pusher('a8fc0c595a781be86e6b', {
-      cluster: 'ap1'
-    })
-  }),
   mounted() {
-    let channel = this.pusher.subscribe(`scan-absent`)
+    let channel = this.$root.pusher.subscribe(`scan-absent`)
     channel.bind(".scan-absent-done", (val) => {
       console.log("pusher: ", val)
     })
   },
   methods: {
     onDecode(val) {
-      console.log("decode: ", val)
+      if (val === "hi, iam jar") {
+        console.log("decode: ", this.$root.auth)
+      }
     },
-    onLoaded(val) {
-      console.log("laoded: ", val)
+    onLoaded() {
+      return;
     },
   }
 }

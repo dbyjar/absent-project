@@ -171,7 +171,7 @@ var staticRenderFns = [function () {
   }, [_c("img", {
     staticClass: "rounded-circle",
     attrs: {
-      src: __webpack_require__(/*! @assets/images/users/5.jpg */ "./resources/js/assets/images/users/5.jpg"),
+      src: __webpack_require__(/*! @assets/images/users/7.jpg */ "./resources/js/assets/images/users/7.jpg"),
       alt: "user",
       width: "50"
     }
@@ -234,13 +234,13 @@ module.exports = "/images/4.jpg?128dd6c1580e0c9d2212a1f1fef11453";
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/users/5.jpg":
+/***/ "./resources/js/assets/images/users/7.jpg":
 /*!************************************************!*\
-  !*** ./resources/js/assets/images/users/5.jpg ***!
+  !*** ./resources/js/assets/images/users/7.jpg ***!
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "/images/5.jpg?0163d723597a6013d01bc761027fd993";
+module.exports = "/images/7.jpg?58e07d7012f0ad038da183b73c9a77bf";
 
 /***/ }),
 

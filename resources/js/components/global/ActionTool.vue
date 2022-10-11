@@ -1,7 +1,7 @@
 <template>
   <div class="btn-group dropstart">
     <a
-      href="#"
+      href="javascript:;"
       class="dropdown-toggle"
       data-bs-toggle="dropdown"
       aria-expanded="false"
@@ -14,7 +14,7 @@
         <hr class="dropdown-divider">
       </li>
       <li><a 
-        href="#"
+        href="javascript:;"
         class="dropdown-item" 
         v-if="!withoutDetail"
         @click="$emit('detail')"
@@ -22,7 +22,7 @@
         <i class="fas fa-fw fa-info-circle"></i> Detail
       </a></li>
       <li><a 
-        href="#"
+        href="javascript:;"
         class="dropdown-item" 
         v-if="!withoutEdit"
         @click="$emit('edit')"
@@ -30,7 +30,7 @@
         <i class="fas fa-fw fa-pen-square"></i> Edit
       </a></li>
       <li><a 
-        href="#"
+        href="javascript:;"
         class="dropdown-item" 
         v-if="!withoutRemove"
         @click="$emit('remove')"
