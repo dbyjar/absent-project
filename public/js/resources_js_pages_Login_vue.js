@@ -80,7 +80,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _ref = _context.t2;
                 results = _ref.results;
                 js_cookie__WEBPACK_IMPORTED_MODULE_0__["default"].set("absentSession", results.token, {
-                  expires: 1
+                  expires: 0.04
                 });
                 window.location.href = "/";
                 _context.next = 23;

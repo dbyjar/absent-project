@@ -43,6 +43,11 @@ export default {
         icon: "mdi mdi-account-star-variant",
       },
       {
+        name: "attendance",
+        routeName: "attendance",
+        icon: "mdi mdi-account-network",
+      },
+      {
         name: "shift & salary",
         routeName: "shift-and-salary",
         icon: "mdi mdi-clock-end",

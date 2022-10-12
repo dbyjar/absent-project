@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\UserRoles;
 
 class UserRoleTableSeeder extends Seeder
 {
@@ -14,12 +14,12 @@ class UserRoleTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('user_roles')->insert([
-            'name' => "user"
-        ]);
-        
-        DB::table('user_roles')->insert([
-            'name' => "admin"
-        ]);
+        $data = ["admin", "user"];
+
+        foreach ($data as $value) {
+            UserRoles::create([
+                'name' => $value
+            ]);
+        }
     }
 }

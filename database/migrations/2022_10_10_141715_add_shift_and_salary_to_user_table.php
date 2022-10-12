@@ -20,12 +20,12 @@ class AddShiftAndSalaryToUserTable extends Migration
             $table->foreign('job_id')
                 ->references('id')
                 ->on('jobs')
-                ->onDelete('cascade');
-            $table->bigInteger('shift_id')->unsigned()->nullable();
-            $table->foreign('shift_id')
+                ->onDelete('set null');
+            $table->bigInteger('shift_and_salary_id')->unsigned()->nullable();
+            $table->foreign('shift_and_salary_id')
                 ->references('id')
                 ->on('shift_and_salaries')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
     }
 

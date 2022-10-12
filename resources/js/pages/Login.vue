@@ -52,7 +52,7 @@ export default {
         ).data ?? {}
         
         Cookies.set("absentSession", results.token, {
-          expires: 1
+          expires: 0.04
         })
         
         window.location.href = "/"

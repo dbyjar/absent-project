@@ -1,5 +1,15 @@
 <template>
   <div class="card-body d-flex flex-column justify-content-center">
+    <div>
+      <span class="me-2">
+        <small class="text-muted">Name: </small>
+        <h6 class="d-inline-block">{{ user.name }}</h6>,
+      </span>
+      <span>
+        <small class="text-muted">Job: </small>
+        <h6 class="d-inline-block">{{ user.job.name }}</h6>
+      </span>
+    </div>
     <div class="d-flex mb-3 justify-content-center">
       <div id="camera" ref="camera"></div>
       <div id="result" v-if="base64URI">
@@ -35,6 +45,10 @@ export default {
       type: Number,
       default: 420,
     },
+    user: {
+      type: Object,
+      required: true
+    }
   },
   created() {
     Webcam.set({

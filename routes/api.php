@@ -6,6 +6,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\EmployeeController;
 use App\Http\Controllers\API\JobController;
 use App\Http\Controllers\API\ShiftAndSalaryController;
+use App\Http\Controllers\API\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::delete('/{id}', [ShiftAndSalaryController::class, 'destroy']);
         Route::get('/{id}', [ShiftAndSalaryController::class, 'show']);
         Route::put('/{id}', [ShiftAndSalaryController::class, 'update']);
+    });
+
+    Route::prefix('attendance')->group(function () {
+        Route::get('/', [AttendanceController::class, 'index']);
+        Route::post('show_data', [AttendanceController::class, 'show']);
     });
 });

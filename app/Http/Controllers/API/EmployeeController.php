@@ -17,7 +17,7 @@ class EmployeeController extends Controller
 
         $user = User::when($keyword, function ($query) use ($keyword) {
             $query->where("name", "like", "%$keyword%");
-        })->with("userRole")->paginate($limit);
+        })->with("userRole", "job")->paginate($limit);
  
         return response()->json(['results' => $user]);
     }

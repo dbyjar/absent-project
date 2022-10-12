@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Job;
 
 class JobDataSeeder extends Seeder
 {
@@ -14,12 +15,12 @@ class JobDataSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('job')->insert([
-            'name' => "admin"
-        ]);
+        $data = ["admin", "packer"];
 
-        DB::table('job')->insert([
-            'name' => "packer"
-        ]);
+        foreach ($data as $value) {
+            Job::create([
+                'name' => $value
+            ]);
+        }
     }
 }

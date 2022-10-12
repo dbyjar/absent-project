@@ -32,6 +32,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     height: {
       type: Number,
       "default": 420
+    },
+    user: {
+      type: Object,
+      required: true
     }
   },
   created: function created() {
@@ -122,8 +126,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   components: {
     Camera: _components_Camera_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  data: function data() {
+    return {
+      user: {}
+    };
+  },
+  mounted: function mounted() {
+    this.subscribeChannel();
+  },
   methods: {
+    subscribeChannel: function subscribeChannel() {
+      var _this = this;
+
+      this.$root.pusher.subscribe('scan-absent').bind("show-data-absent", function (data) {
+        console.log(data);
+        _this.user = data.user;
+
+        _this.$forceUpdate();
+      });
+    },
     onCameraSnap: function onCameraSnap(image) {
+      var _this2 = this;
+
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -131,14 +155,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 data = new FormData();
+                data.append("user_id", _this2.user.id);
                 data.append("image", image);
+                console.log({
+                  user_id: _this2.user.id,
+                  shift_id: 1,
+                  punch_in: new Date(),
+                  image: image
+                });
 
                 try {
                   // await axios.post("/api/employee/absent", data)
                   alert("success"); // this.$route.push()
                 } catch (error) {}
 
-              case 3:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -169,7 +200,17 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "card-body d-flex flex-column justify-content-center"
-  }, [_c("div", {
+  }, [_c("div", [_c("span", {
+    staticClass: "me-2"
+  }, [_c("small", {
+    staticClass: "text-muted"
+  }, [_vm._v("Name: ")]), _vm._v(" "), _c("h6", {
+    staticClass: "d-inline-block"
+  }, [_vm._v(_vm._s(_vm.user.name))]), _vm._v(",\n    ")]), _vm._v(" "), _c("span", [_c("small", {
+    staticClass: "text-muted"
+  }, [_vm._v("Job: ")]), _vm._v(" "), _c("h6", {
+    staticClass: "d-inline-block"
+  }, [_vm._v(_vm._s(_vm.user.job.name))])])]), _vm._v(" "), _c("div", {
     staticClass: "d-flex mb-3 justify-content-center"
   }, [_c("div", {
     ref: "camera",
@@ -234,7 +275,7 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "d-flex justify-content-around"
-  }, [_c("div", [_c("div", {
+  }, [!_vm.user.id ? _c("div", [_c("div", {
     staticClass: "card-body d-flex flex-column"
   }, [_c("img", {
     staticClass: "result",
@@ -246,8 +287,11 @@ var render = function render() {
     staticClass: "text-center text-capitalize fw-bold mt-3"
   }, [_c("i", {
     staticClass: "mdi mdi-qrcode-scan"
-  }), _vm._v(" Scan me\n                ")])])]), _vm._v(" "), _c("div", [_c("camera", {
+  }), _vm._v(" Scan me\n                ")])])]) : _c("div", [_c("camera", {
     ref: "camera",
+    attrs: {
+      user: _vm.user
+    },
     on: {
       snap: _vm.onCameraSnap
     }

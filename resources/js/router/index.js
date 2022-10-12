@@ -116,6 +116,16 @@ const routes = [
       origin: "shift-and-salary"
     }
   },
+  {
+    name: 'attendance',
+    path: '/attendance',
+    component: () => import('@pages/Attendance.vue'),
+    meta: {
+      pageAct: "",
+      menuTranslate: "attendance",
+      origin: "attendance"
+    }
+  },
 ]
 
 const router = new VueRouter({

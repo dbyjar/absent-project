@@ -18,11 +18,11 @@ class CreateShiftAndSalaryTable extends Migration
             $table->string("name");
             $table->string("time");
             $table->integer("price");
-            $table->bigInteger('job_id')->unsigned();
+            $table->bigInteger('job_id')->unsigned()->nullable();
             $table->foreign('job_id')
                 ->references('id')
                 ->on('jobs')
-                ->onDelete('cascade');
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

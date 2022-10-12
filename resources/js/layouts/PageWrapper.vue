@@ -28,6 +28,7 @@
                                         }
                                     ]"
                                 aria-current="page"
+                                v-if="$route.meta.pageAct"
                             >
                                 <span class="text-capitalize">{{ $route.meta.pageAct }}</span>
                             </li>

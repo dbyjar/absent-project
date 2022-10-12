@@ -48,11 +48,11 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     public function userRole() {
-      return $this->hasOne('App\Models\UserRoles', 'id', 'user_role_id');
+      return $this->belongsTo(UserRoles::class);
     }
 
     public function job() {
-      return $this->hasOne('App\Models\Job', 'id', 'job_id');
+      return $this->belongsTo(Job::class);
     }
 
     public function getJWTIdentifier() {

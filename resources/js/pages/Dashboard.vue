@@ -1,15 +1,22 @@
 <template>
     <div>
         <Tools withoutDefaultButton>
-            <button
+            <!-- <button
                 class="btn btn-primary"
                 v-if="user?.user_role_id === 1"
                 @click="$router.push({ name: 'scanQRCode' })"
             >
                 <i class="mdi mdi-qrcode-scan"></i> Scan QR
+            </button> -->
+            <button
+                class="btn btn-primary"
+                v-if="user?.user_role_id === 1"
+                @click="triggerPusherAPI"
+            >
+                <i class="mdi mdi-qrcode-scan"></i> Absent
             </button>
         </Tools>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
@@ -73,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -87,5 +94,14 @@ export default {
     data: () => ({
         columns: []
     }),
+    methods: {
+        async triggerPusherAPI() {
+            await axios.post(
+                "/api/attendance/show_data",
+                this.user,
+                this.$root.headersRequestAPI
+            )
+        }
+    }
 }
 </script>

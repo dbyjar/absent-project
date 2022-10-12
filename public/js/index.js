@@ -5811,6 +5811,10 @@ __webpack_require__.r(__webpack_exports__);
         routeName: "jobs",
         icon: "mdi mdi-account-star-variant"
       }, {
+        name: "attendance",
+        routeName: "attendance",
+        icon: "mdi mdi-account-network"
+      }, {
         name: "shift & salary",
         routeName: "shift-and-salary",
         icon: "mdi mdi-clock-end"
@@ -6488,7 +6492,7 @@ var render = function render() {
     }
   }, [_c("span", {
     staticClass: "text-capitalize"
-  }, [_vm._v(_vm._s(_vm.$route.meta.menuTranslate))])]), _vm._v(" "), _c("li", {
+  }, [_vm._v(_vm._s(_vm.$route.meta.menuTranslate))])]), _vm._v(" "), _vm.$route.meta.pageAct ? _c("li", {
     "class": ["breadcrumb-item", {
       active: _vm.$route.meta.pageAct
     }],
@@ -6497,7 +6501,7 @@ var render = function render() {
     }
   }, [_c("span", {
     staticClass: "text-capitalize"
-  }, [_vm._v(_vm._s(_vm.$route.meta.pageAct))])])])]), _vm._v(" "), _c("h1", {
+  }, [_vm._v(_vm._s(_vm.$route.meta.pageAct))])]) : _vm._e()])]), _vm._v(" "), _c("h1", {
     staticClass: "mb-0 fw-bold"
   }, [_c("span", {
     staticClass: "text-capitalize"
@@ -6980,6 +6984,17 @@ var routes = [{
     pageAct: "edit",
     menuTranslate: "shift and salary",
     origin: "shift-and-salary"
+  }
+}, {
+  name: 'attendance',
+  path: '/attendance',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_pages_Attendance_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Attendance.vue */ "./resources/js/pages/Attendance.vue"));
+  },
+  meta: {
+    pageAct: "",
+    menuTranslate: "attendance",
+    origin: "attendance"
   }
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
@@ -84520,7 +84535,7 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_404_vue":1,"resources_js_pages_Dashboard_vue":1,"resources_js_pages_Absent_vue":1,"resources_js_pages_Login_vue":1,"resources_js_pages_ScanQRCode_vue":1,"resources_js_pages_Profile_vue":1,"resources_js_pages_Users_vue":1,"resources_js_pages_Jobs_vue":1,"resources_js_pages_ShiftAndSalary_vue":1,"resources_js_pages_ShiftAndSalarySetData_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_404_vue":1,"resources_js_pages_Dashboard_vue":1,"resources_js_pages_Absent_vue":1,"resources_js_pages_Login_vue":1,"resources_js_pages_ScanQRCode_vue":1,"resources_js_pages_Profile_vue":1,"resources_js_pages_Users_vue":1,"resources_js_pages_Jobs_vue":1,"resources_js_pages_ShiftAndSalary_vue":1,"resources_js_pages_ShiftAndSalarySetData_vue":1,"resources_js_pages_Attendance_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
