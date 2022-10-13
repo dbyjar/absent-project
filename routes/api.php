@@ -23,15 +23,18 @@ use App\Http\Controllers\API\AttendanceController;
 Route::post('login', [AuthController::class, 'authenticate']);
 Route::post('register', [AuthController::class, 'register']);
 
-// Employee
-Route::prefix('employee')->group(function () {
-    Route::get('/', [EmployeeController::class, 'index']);
-    Route::post('absent', [EmployeeController::class, 'absent']);
-});
+// for Attendance
+Route::get('shift_select', [ShiftAndSalaryController::class, 'index']);
+Route::post('absent', [AttendanceController::class, 'absent']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('get_user', [AuthController::class, 'getUser']);
+
+    // Employee
+    Route::prefix('employee')->group(function () {
+        Route::get('/', [EmployeeController::class, 'index']);
+    });
 
     Route::prefix('job')->group(function () {
         Route::get('/', [JobController::class, 'index']);
@@ -48,5 +51,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::prefix('attendance')->group(function () {
         Route::get('/', [AttendanceController::class, 'index']);
         Route::post('show_data', [AttendanceController::class, 'show']);
+        Route::post('absent', [AttendanceController::class, 'absent']);
     });
 });

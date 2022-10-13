@@ -17,15 +17,17 @@ class ShiftAndSalaryController extends Controller
      */
     public function index(Request $request)
     {
-        $limit = $request["limit"] ?? 10;
-        $keyword = $request["search"];
+        $limit = $request->limit ?? 10;
+        $keyword = $request->search ?? "";
+        $byJobId = $request->by_job_id ?? null;
 
-        $data = ShiftAndSalary::when($keyword, function ($query) use ($keyword) {
-            $query->where("name", "like", "%$keyword%");
+        $data = ShiftAndSalary::when($keyword, function ($q) use ($keyword) {
+            $q->where("name", "like", "%$keyword%");
+        })->when($byJobId, function ($q) use ($byJobId) {
+            $q->where("job_id", $byJobId);
         })->with("job")->paginate($limit);
- 
+
         return response()->json([ 'results' => $data ]);
-        
     }
 
     /**

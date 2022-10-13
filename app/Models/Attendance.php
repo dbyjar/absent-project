@@ -9,15 +9,20 @@ class Attendance extends Model
 {
     use HasFactory;
 
+    protected $appends = ['file_src'];
+
+    public static $public_path_file = 'uploads/absent/';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
-        'shift_id',
+        'shift_and_salary_id',
         'punch_in',
+        'user_id',
+        'image',
     ];
 
     public function user()
@@ -28,5 +33,10 @@ class Attendance extends Model
     public function shiftAndSalary()
     {
         return $this->belongsTo(ShiftAndSalary::class);
+    }
+
+    public function getFileSrcAttribute()
+    {
+        return asset(self::$public_path_file . $this->image);
     }
 }
