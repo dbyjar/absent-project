@@ -28,10 +28,10 @@ class AbsentRequest extends FormRequest
         ], 500));
     }
 
-    public function messages()
-    {
-        return [
-            'image.required' => 'Image is required bro!!',
-        ];
-    }
+    // public function messages()
+    // {
+    //     return [
+    //         'image.required' => 'image is required',
+    //     ];
+    // }
 }
