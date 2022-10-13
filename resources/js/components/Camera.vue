@@ -16,6 +16,18 @@
         <img class="result" :src="base64URI" alt="absent">
       </div>
     </div>
+    <div class="form-group">
+      <div class="col-sm-12">
+        <select v-model="form.shift_id" class="form-select shadow-none form-control-line">
+          <option
+            v-for="shift in shiftByJob"
+            :key="shift.id"
+            :value="shift.id"
+            v-text="shift.name"
+          ></option>
+        </select>
+      </div>
+    </div>
     <div class="d-flex justify-content-center">
       <button
         v-if="!result"
@@ -58,8 +70,10 @@ export default {
     });
   },
   data:() => ({
+    form: {},
     result: false,
-    base64URI: '',
+    shiftByJob: [],
+    base64URI: ""
   }),
   mounted() {
     this.$nextTick(() => {
@@ -68,6 +82,17 @@ export default {
     })
   },
   methods: {
+    async getShiftByJob() {
+      const { results } = (
+        await axios.get(`/api/shift_select?by_job_id=${this.user.job_id}`)
+      ).data ?? {}
+
+      this.shiftByJob = results.data
+
+      if (this.shiftByJob.length) {
+        this.form.shift_id = this.shiftByJob[0].id
+      }
+    },
     async onCameraSnap() {
       let base64URI
       this.result = true
@@ -76,7 +101,12 @@ export default {
       this.destroyCamera()
 
       this.base64URI = base64URI
-      this.$emit("snap", this.base64URI)
+      this.form = {
+        image: base64URI,
+        ...this.form
+      }
+
+      this.$emit("snap", this.form)
     },
     destroyCamera() {
       Webcam.reset();
@@ -85,6 +115,14 @@ export default {
   },
   destroyed() {
     this.destroyCamera()
+  },
+  watch: {
+    user: {
+      immediate: true,
+      async handler(val) {
+        if (val.id) await this.getShiftByJob()
+      }
+    }
   }
 }
 </script>

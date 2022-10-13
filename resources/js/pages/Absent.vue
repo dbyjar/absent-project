@@ -36,30 +36,27 @@ export default {
             this.$root.pusher
                 .subscribe('scan-absent')
                 .bind("show-data-absent", (data) => {
-                    console.log(data)
                     this.user = data.user
                     this.$forceUpdate()
                 })
         },
-        async onCameraSnap(image) {
-            const data = new FormData()
-            data.append("user_id", this.user.id)
-            data.append("image", image)
-
-            console.log({
+        async onCameraSnap(data = {}) {
+            const form = {
                 user_id: this.user.id,
-                shift_id: 1,
-                punch_in: new Date(),
-                image
-            })
+                shift_id: data.shift_id,
+                image: data.image
+            }
 
             try {
-                // await axios.post("/api/employee/absent", data)
-
-                alert("success")
-                // this.$route.push()
-            } catch (error) {
+                await axios.post("/api/absent", form)
                 
+                setTimeout(() => {
+                    this.user = {}
+                    this.$refs.camera.destroyCamera()
+                    this.$forceUpdate()
+                }, 5000);
+            } catch (error) {
+                console.log(error)
             }
         }
     },

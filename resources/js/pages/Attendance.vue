@@ -1,61 +1,13 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col-lg-12">
-        <Box>
-          <BaseTable
-            ref="table"
-            :config="{
-              namespace: 'attendance',
-            }"
-            :columns="columns"
-            v-slot="{ rows }"
-            withoutOptionColumn
-          >
-            <base-table-row v-for="row in rows" :key="row.id">
-              <base-table-column>{{ row.user?.name }}</base-table-column>
-              <base-table-column>{{ row.punch_in }}</base-table-column>
-              <base-table-column>{{ row.shift_and_salary?.name }}</base-table-column>
-              <base-table-column>{{ row.shift_and_salary?.price }}</base-table-column>
-            </base-table-row>
-          </BaseTable>
-        </Box>
-      </div>
-    </div>
-  </div>
+  <Box>
+    <attendance-table></attendance-table>
+  </Box>
 </template>
 
 <script>
-export default {
-  data: () => ({
-    columns: [
-      {
-        name: "employee",
-        class: "",
-      },
-      {
-        name: "punch in",
-        class: "",
-      },
-      {
-        name: "shift",
-        class: "",
-      },
-      {
-        name: "price",
-        class: "",
-      },
-    ]
-  }),
-  methods: {
-    async remove(id) {
-      await axios.delete(
-        `/api/attendance/${id}`,
-        this.$root.headersRequestAPI
-      )
+import AttendanceTable from '@components/table/AttendanceTable.vue'
 
-      this.$refs.table.fetchs()
-    }
-  }
+export default {
+  components: { AttendanceTable }
 }
 </script>

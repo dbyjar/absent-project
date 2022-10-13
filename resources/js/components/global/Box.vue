@@ -10,7 +10,7 @@
           <h5 class="card-subtitle">{{ subtitle }}</h5>
         </div>
         <div class="ms-auto">
-          <slot name="right-side-title"></slot>
+          <slot name="right-side"></slot>
         </div>
       </div>
       <div class="mt-3">
