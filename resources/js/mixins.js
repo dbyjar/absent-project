@@ -10,3 +10,26 @@ export const global = {
     }
   }
 }
+
+
+/** 
+ * @param bsModalRef
+ */
+export const bsModalComponentOptions = bsModalRef => ({
+  props: {
+    value: false
+  },
+  mounted() {
+    this.$refs[bsModalRef]?.$on("hide", () => {
+      this.$emit("update:value", false);
+    });
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler(val) {
+        if (val) this.$refs[bsModalRef]?.show()
+      }
+    }
+  }
+})
