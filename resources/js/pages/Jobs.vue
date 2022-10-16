@@ -1,13 +1,9 @@
 <template>
   <div>
-    <Tools @click="showModalAdd = true" />
-    <!-- <Tools withoutDefaultButton>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal">
-        Launch demo modal
-      </button>
-    </Tools> -->
+    <Tools @click="showModalJob = true" />
     <Box>
       <BaseTable
+        ref="table"
         :config="{
           namespace: 'job',
         }"
@@ -28,7 +24,11 @@
       </BaseTable>
     </Box>
 
-    <job-set-data-modal :value.sync="showModalAdd" />
+    <job-set-data-modal
+      ref="jobModal" 
+      :value.sync="showModalJob"
+      @action-done="$refs.table.fetchs()"
+    />
   </div>
 </template>
 
@@ -38,7 +38,7 @@ import JobSetDataModal from '@components/modal/JobSetDataModal.vue'
 export default {
   components: { JobSetDataModal },
   data: () => ({
-    showModalAdd: false,
+    showModalJob: false,
     columns: [
       {
         name: "created at",
@@ -51,10 +51,14 @@ export default {
     ]
   }),
   methods: {
-    onShowModalAddClick() {
-      this.showModalAdd = true
-      this.$forceUpdate()
-      // this.$router.push({ name: 'jobs-create' })
+    edit(id) {
+      this.$refs.jobModal.editId = id
+      this.showModalJob = true
+    },
+    async remove(id) {
+      await axios.delete(`/api/job/${id}`, this.$root.headersRequestAPI)
+
+      this.$refs.table.fetchs()
     }
   }
 }

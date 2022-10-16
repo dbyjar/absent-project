@@ -21,6 +21,7 @@ export const bsModalComponentOptions = bsModalRef => ({
   },
   mounted() {
     this.$refs[bsModalRef]?.$on("hide", () => {
+      this.editId = null;
       this.$emit("update:value", false);
     });
   },
@@ -28,7 +29,11 @@ export const bsModalComponentOptions = bsModalRef => ({
     value: {
       immediate: true,
       handler(val) {
-        if (val) this.$refs[bsModalRef]?.show()
+        if (val) {
+          this.$refs[bsModalRef]?.show()
+        } else {
+          this.$refs[bsModalRef]?.hide()
+        }
       }
     }
   }

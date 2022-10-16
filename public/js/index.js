@@ -6975,6 +6975,8 @@ var bsModalComponentOptions = function bsModalComponentOptions(bsModalRef) {
           _this = this;
 
       (_this$$refs$bsModalRe = this.$refs[bsModalRef]) === null || _this$$refs$bsModalRe === void 0 ? void 0 : _this$$refs$bsModalRe.$on("hide", function () {
+        _this.editId = null;
+
         _this.$emit("update:value", false);
       });
     },
@@ -6982,9 +6984,15 @@ var bsModalComponentOptions = function bsModalComponentOptions(bsModalRef) {
       value: {
         immediate: true,
         handler: function handler(val) {
-          var _this$$refs$bsModalRe2;
+          if (val) {
+            var _this$$refs$bsModalRe2;
 
-          if (val) (_this$$refs$bsModalRe2 = this.$refs[bsModalRef]) === null || _this$$refs$bsModalRe2 === void 0 ? void 0 : _this$$refs$bsModalRe2.show();
+            (_this$$refs$bsModalRe2 = this.$refs[bsModalRef]) === null || _this$$refs$bsModalRe2 === void 0 ? void 0 : _this$$refs$bsModalRe2.show();
+          } else {
+            var _this$$refs$bsModalRe3;
+
+            (_this$$refs$bsModalRe3 = this.$refs[bsModalRef]) === null || _this$$refs$bsModalRe3 === void 0 ? void 0 : _this$$refs$bsModalRe3.hide();
+          }
         }
       }
     }

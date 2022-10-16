@@ -36,17 +36,13 @@ Route::group(['middleware' => ['jwt.verify']], function() {
         Route::get('/', [EmployeeController::class, 'index']);
     });
 
-    Route::prefix('job')->group(function () {
-        Route::get('/', [JobController::class, 'index']);
-    });
+    Route::resource('job', JobController::class, [
+        'only' => ["index", "show", "store", "update", "destroy"]
+    ]);
 
-    Route::prefix('shift_and_salary')->group(function () {
-        Route::get('/', [ShiftAndSalaryController::class, 'index']);
-        Route::post('/', [ShiftAndSalaryController::class, 'store']);
-        Route::delete('/{id}', [ShiftAndSalaryController::class, 'destroy']);
-        Route::get('/{id}', [ShiftAndSalaryController::class, 'show']);
-        Route::put('/{id}', [ShiftAndSalaryController::class, 'update']);
-    });
+    Route::resource('shift_and_salary', ShiftAndSalaryController::class, [
+        'only' => ["index", "show", "store", "destroy", "update"]
+    ]);
 
     Route::prefix('attendance')->group(function () {
         Route::get('/', [AttendanceController::class, 'index']);
