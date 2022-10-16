@@ -48,15 +48,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("Tools", {
-    on: {
-      click: function click($event) {
-        return _vm.$router.push({
-          name: "user-create"
-        });
-      }
-    }
-  }), _vm._v(" "), _c("div", {
+  return _c("div", [_c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-lg-12"
@@ -68,7 +60,8 @@ var render = function render() {
           user_id: 1
         }
       },
-      columns: _vm.columns
+      columns: _vm.columns,
+      withoutOptionColumn: ""
     },
     scopedSlots: _vm._u([{
       key: "default",
@@ -77,28 +70,11 @@ var render = function render() {
         return _vm._l(rows, function (row) {
           return _c("base-table-row", {
             key: row.id
-          }, [_c("base-table-column", [_vm._v(_vm._s(_vm.formatDate(row.created_at)))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.name))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.email))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.user_role.name))]), _vm._v(" "), _c("base-table-column", {
-            staticClass: "text-end",
-            attrs: {
-              "overflow-visible": ""
-            }
-          }, [_c("action-tool", {
-            attrs: {
-              withoutDetail: ""
-            },
-            on: {
-              edit: function edit($event) {
-                return _vm.edit(row.id);
-              },
-              remove: function remove($event) {
-                return _vm.remove(row.id);
-              }
-            }
-          })], 1)], 1);
+          }, [_c("base-table-column", [_vm._v(_vm._s(_vm.formatDate(row.created_at)))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.name))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.email))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.user_role.name))])], 1);
         });
       }
     }])
-  })], 1)], 1)])], 1);
+  })], 1)], 1)])]);
 };
 
 var staticRenderFns = [];
