@@ -57,7 +57,6 @@ export default {
         }
       }
 
-      console.log(data)
       this.$nextTick(() => {
         this.$refs.table.fetchs()
       })

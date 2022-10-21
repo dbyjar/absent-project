@@ -104,7 +104,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.config = _objectSpread(_objectSpread({}, this.config), {}, {
         params: _objectSpread({}, data)
       });
-      console.log(data);
       this.$nextTick(function () {
         _this2.$refs.table.fetchs();
       });
