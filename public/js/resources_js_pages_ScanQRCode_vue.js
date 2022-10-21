@@ -17884,17 +17884,16 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     StreamBarcodeReader: vue_barcode_reader__WEBPACK_IMPORTED_MODULE_0__.StreamBarcodeReader
   },
-  mounted: function mounted() {
-    var channel = this.$root.pusher.subscribe("scan-absent");
-    channel.bind(".scan-absent-done", function (val) {
-      console.log("pusher: ", val);
-    });
-  },
   methods: {
-    onDecode: function onDecode(val) {
-      if (val === "hi, iam jar") {
-        console.log("decode: ", this.$root.auth);
-      }
+    onDecode: function onDecode() {
+      this.$router.push({
+        name: "absent",
+        params: {
+          query: {
+            user: 1
+          }
+        }
+      });
     },
     onLoaded: function onLoaded() {
       return;

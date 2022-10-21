@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mt-4">
       <div>
         <span class="fw-bold">total: </span>
         {{ table.total }}
@@ -75,6 +75,7 @@
 import Paginate from 'vuejs-paginate'
 
 export default {
+  name: "BaseTable",
   components: { Paginate },
   props: {
     withoutOptionColumn: {
@@ -114,7 +115,7 @@ export default {
         ...this.config.params,
         ...this.options,
       })
-      
+
       try {
         const { results } = (
           await axios.get(`/api/${this.config.namespace}?${params}`, {

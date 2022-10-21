@@ -70,7 +70,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var _yield$axios$get$data;
+        var _yield$axios$get$data, _results$data;
 
         var _ref, results;
 
@@ -108,7 +108,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 11:
                 _ref = _context.t2;
                 results = _ref.results;
-                _this.shiftByJob = results.data;
+                _this.shiftByJob = (_results$data = results.data) !== null && _results$data !== void 0 ? _results$data : [];
 
                 if (_this.shiftByJob.length) {
                   _this.form.shift_id = _this.shiftByJob[0].id;

@@ -1,9 +1,7 @@
 <template>
   <BaseTable
     ref="table"
-    :config="{
-      namespace: 'attendance',
-    }"
+    :config="config"
     :columns="columns"
     v-slot="{ rows }"
     withoutOptionColumn
@@ -20,6 +18,9 @@
 <script>
 export default {
   data: () => ({
+    config: {
+      namespace: "attendance"
+    },
     columns: [
       {
         name: "employee",
@@ -47,7 +48,20 @@ export default {
       )
 
       this.$refs.table.fetchs()
+    },
+    handleFilter(data) {
+      this.config = {
+        ...this.config,
+        params: {
+          ...data
+        }
+      }
+
+      console.log(data)
+      this.$nextTick(() => {
+        this.$refs.table.fetchs()
+      })
     }
-  }
+  },
 }
 </script>

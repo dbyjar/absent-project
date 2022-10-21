@@ -87,7 +87,7 @@ export default {
         await axios.get(`/api/shift_select?by_job_id=${this.user.job_id}`)
       ).data ?? {}
 
-      this.shiftByJob = results.data
+      this.shiftByJob = results.data ?? []
 
       if (this.shiftByJob.length) {
         this.form.shift_id = this.shiftByJob[0].id
