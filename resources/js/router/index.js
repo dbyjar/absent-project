@@ -38,7 +38,7 @@ const routes = [
   },
   {
     name: 'login',
-    path: '/login',
+    path: '/bajksdkajks',
     component: () => import('@pages/Login.vue'),
     meta: {
       pageAct: "",
@@ -48,7 +48,7 @@ const routes = [
   },
   {
     name: 'scanQRCode',
-    path: '/scan',
+    path: '/bkjanskjhaj',
     component: () => import('@pages/ScanQRCode.vue'),
     meta: {
       pageAct: "",
@@ -58,7 +58,7 @@ const routes = [
   },
   {
     name: 'profile',
-    path: '/profile',
+    path: '/bkajbshkaj',
     component: () => import('@pages/Profile.vue'),
     meta: {
       pageAct: "",
@@ -68,7 +68,7 @@ const routes = [
   },
   {
     name: 'users',
-    path: '/users',
+    path: '/iuejrnakskda',
     component: () => import('@pages/Users.vue'),
     meta: {
       pageAct: "",
@@ -78,7 +78,7 @@ const routes = [
   },
   {
     name: 'jobs',
-    path: '/jobs',
+    path: '/bakjhrie',
     component: () => import('@pages/Jobs.vue'),
     meta: {
       pageAct: "",
@@ -88,7 +88,7 @@ const routes = [
   },
   {
     name: 'shift-and-salary',
-    path: '/shift-and-salary',
+    path: '/bciwjebijw',
     component: () => import('@pages/ShiftAndSalary.vue'),
     meta: {
       pageAct: "",
@@ -98,7 +98,7 @@ const routes = [
   },
   {
     name: 'shift-and-salary-create',
-    path: '/shift-and-salary/create',
+    path: '/bciwjebijw/create',
     component: () => import('@pages/ShiftAndSalarySetData.vue'),
     meta: {
       pageAct: "create",
@@ -108,7 +108,7 @@ const routes = [
   },
   {
     name: 'shift-and-salary-edit',
-    path: '/shift-and-salary/edit/:id',
+    path: '/bciwjebijw/edit/:id',
     component: () => import('@pages/ShiftAndSalarySetData.vue'),
     meta: {
       pageAct: "edit",
@@ -118,7 +118,7 @@ const routes = [
   },
   {
     name: 'attendance',
-    path: '/attendance',
+    path: '/bdkjhfaisue',
     component: () => import('@pages/Attendance.vue'),
     meta: {
       pageAct: "",

@@ -5857,28 +5857,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  computed: {
+    secureIsOn: function secureIsOn() {
+      var _this = this;
+
+      return function (menu) {
+        if (menu.secure === true) {
+          return _this.$root.auth.user_role_id === 1;
+        } else {
+          return true;
+        }
+      };
+    }
+  },
   data: function data() {
     return {
       listMenu: [{
         name: "dashboard",
         routeName: "dashboard",
-        icon: "mdi mdi-view-dashboard"
+        icon: "mdi mdi-view-dashboard",
+        secure: false
       }, {
         name: "users",
         routeName: "users",
-        icon: "mdi mdi-account-multiple"
+        icon: "mdi mdi-account-multiple",
+        secure: true
       }, {
         name: "jobs",
         routeName: "jobs",
-        icon: "mdi mdi-account-star-variant"
+        icon: "mdi mdi-account-star-variant",
+        secure: true
       }, {
         name: "attendance",
         routeName: "attendance",
-        icon: "mdi mdi-account-network"
+        icon: "mdi mdi-account-network",
+        secure: true
       }, {
         name: "shift & salary",
         routeName: "shift-and-salary",
-        icon: "mdi mdi-clock-end"
+        icon: "mdi mdi-clock-end",
+        secure: true
       }]
     };
   }
@@ -6680,7 +6698,7 @@ var render = function render() {
       "class": ["sidebar-item", {
         selected: _vm.$route.name === menu.routeName
       }]
-    }, [_c("a", {
+    }, [_vm.secureIsOn(menu) ? _c("a", {
       staticClass: "sidebar-link waves-effect waves-dark sidebar-link",
       attrs: {
         href: "javascript:;"
@@ -6696,7 +6714,7 @@ var render = function render() {
       "class": menu.icon
     }), _vm._v(" "), _c("span", {
       staticClass: "hide-menu text-capitalize"
-    }, [_vm._v(_vm._s(menu.name))])])]);
+    }, [_vm._v(_vm._s(menu.name))])]) : _vm._e()]);
   }), 0)])])]);
 };
 
@@ -7063,7 +7081,7 @@ var routes = [{
   }
 }, {
   name: 'login',
-  path: '/login',
+  path: '/bajksdkajks',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Login_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Login.vue */ "./resources/js/pages/Login.vue"));
   },
@@ -7074,7 +7092,7 @@ var routes = [{
   }
 }, {
   name: 'scanQRCode',
-  path: '/scan',
+  path: '/bkjanskjhaj',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_ScanQRCode_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/ScanQRCode.vue */ "./resources/js/pages/ScanQRCode.vue"));
   },
@@ -7085,7 +7103,7 @@ var routes = [{
   }
 }, {
   name: 'profile',
-  path: '/profile',
+  path: '/bkajbshkaj',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Profile.vue */ "./resources/js/pages/Profile.vue"));
   },
@@ -7096,7 +7114,7 @@ var routes = [{
   }
 }, {
   name: 'users',
-  path: '/users',
+  path: '/iuejrnakskda',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Users_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Users.vue */ "./resources/js/pages/Users.vue"));
   },
@@ -7107,7 +7125,7 @@ var routes = [{
   }
 }, {
   name: 'jobs',
-  path: '/jobs',
+  path: '/bakjhrie',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Jobs_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Jobs.vue */ "./resources/js/pages/Jobs.vue"));
   },
@@ -7118,7 +7136,7 @@ var routes = [{
   }
 }, {
   name: 'shift-and-salary',
-  path: '/shift-and-salary',
+  path: '/bciwjebijw',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_ShiftAndSalary_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/ShiftAndSalary.vue */ "./resources/js/pages/ShiftAndSalary.vue"));
   },
@@ -7129,7 +7147,7 @@ var routes = [{
   }
 }, {
   name: 'shift-and-salary-create',
-  path: '/shift-and-salary/create',
+  path: '/bciwjebijw/create',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_ShiftAndSalarySetData_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/ShiftAndSalarySetData.vue */ "./resources/js/pages/ShiftAndSalarySetData.vue"));
   },
@@ -7140,7 +7158,7 @@ var routes = [{
   }
 }, {
   name: 'shift-and-salary-edit',
-  path: '/shift-and-salary/edit/:id',
+  path: '/bciwjebijw/edit/:id',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_ShiftAndSalarySetData_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/ShiftAndSalarySetData.vue */ "./resources/js/pages/ShiftAndSalarySetData.vue"));
   },
@@ -7151,7 +7169,7 @@ var routes = [{
   }
 }, {
   name: 'attendance',
-  path: '/attendance',
+  path: '/bdkjhfaisue',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_Attendance_vue").then(__webpack_require__.bind(__webpack_require__, /*! @pages/Attendance.vue */ "./resources/js/pages/Attendance.vue"));
   },
