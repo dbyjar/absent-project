@@ -8,6 +8,7 @@
                 :model="'attendance'"
             ></btn-export-excel>
             <button class="btn btn-secondary me-1" @click="showFilterModal = true">
+                <i class="fas fa-fw fa-filter"></i>
                 <span>Filter</span>
             </button>
             <button

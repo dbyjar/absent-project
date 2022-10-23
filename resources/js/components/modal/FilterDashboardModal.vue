@@ -27,6 +27,13 @@
 
     <template #footer>
       <div class="text-right">
+        <button 
+          type="button"
+          class="btn btn-sm btn-danger text-white me-1"
+          @click="onFilterSubmit(true)"
+        >
+          Reset
+        </button>
         <button type="submit" class="btn btn-sm btn-primary" @click="onFilterSubmit">Filter</button>
       </div>
     </template>
@@ -53,7 +60,9 @@ export default {
 
       this.employees = results.data
     }, 
-    onFilterSubmit() {
+    onFilterSubmit(reset) {
+      if (reset === true) this.form = {}
+      
       this.$emit("filter-update", this.form)
       this.$refs.bsModal.hide()
     }

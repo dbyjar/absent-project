@@ -119,7 +119,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    onFilterSubmit: function onFilterSubmit() {
+    onFilterSubmit: function onFilterSubmit(reset) {
+      if (reset === true) this.form = {};
       this.$emit("filter-update", this.form);
       this.$refs.bsModal.hide();
     }
@@ -462,6 +463,16 @@ var render = function render() {
         return [_c("div", {
           staticClass: "text-right"
         }, [_c("button", {
+          staticClass: "btn btn-sm btn-danger text-white me-1",
+          attrs: {
+            type: "button"
+          },
+          on: {
+            click: function click($event) {
+              return _vm.onFilterSubmit(true);
+            }
+          }
+        }, [_vm._v("\n        Reset\n      ")]), _vm._v(" "), _c("button", {
           staticClass: "btn btn-sm btn-primary",
           attrs: {
             type: "submit"
@@ -564,7 +575,9 @@ var render = function render() {
         _vm.showFilterModal = true;
       }
     }
-  }, [_c("span", [_vm._v("Filter")])]), _vm._v(" "), !_vm.isAdmin ? _c("button", {
+  }, [_c("i", {
+    staticClass: "fas fa-fw fa-filter"
+  }), _vm._v(" "), _c("span", [_vm._v("Filter")])]), _vm._v(" "), !_vm.isAdmin ? _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "button",

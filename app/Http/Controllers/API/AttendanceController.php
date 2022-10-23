@@ -33,19 +33,20 @@ class AttendanceController extends Controller
                 $query->whereBetween(DB::raw("DATE(created_at)"), [$fromDate, $toDate]);
             })->when($employeeId, function ($query) use ($employeeId) {
                 $query->where("user_id", $employeeId);
-            })->with("user", "shiftAndSalary")->paginate($limit);
+            });
         } else {
             $data = Attendance::when($keyword, function ($query) use ($user) {
                 $query->where("name", "like", "%$keyword%");
             })->when($fromDate, function ($query) use ($fromDate, $toDate) {
                 $query->whereBetween(DB::raw("DATE(created_at)"), [$fromDate, $toDate]);
-            })
-                ->where("user_id", $user->id)
-                ->with("user", "shiftAndSalary")
-                ->paginate($limit);
+            })->where("user_id", $user->id);
         }
 
-        return response()->json(['results' => $data]);
+        $attendance = $data->with("user", "shiftAndSalary")
+                            ->orderBy('created_at', 'desc')
+                            ->paginate($limit);
+
+        return response()->json(['results' => $attendance]);
     }
 
     public function show(Request $request) {
