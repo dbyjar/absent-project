@@ -20,6 +20,7 @@ class AttendanceController extends Controller
 
         $limit = $request->limit ?? 25;
         $keyword = $request->search;
+        $employeeId = $request->employee_id;
 
         $fromDate = $request->from_date;
         $toDate = $request->to_date;
@@ -29,6 +30,8 @@ class AttendanceController extends Controller
                 $query->where("name", "like", "%$keyword%");
             })->when($fromDate, function ($query) use ($fromDate, $toDate) {
                 $query->whereBetween(DB::raw("DATE(created_at)"), [$fromDate, $toDate]);
+            })->when($employeeId, function ($query) use ($employeeId) {
+                $query->where("user_id", $employeeId);
             })->with("user", "shiftAndSalary")->paginate($limit);
         } else {
             $data = Attendance::when($keyword, function ($query) use ($user) {

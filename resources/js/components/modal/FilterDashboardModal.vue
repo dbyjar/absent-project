@@ -4,6 +4,16 @@
 
     <template #body>
       <form class="form-horizontal form-material mx-2">
+        <div class="form-group" v-if="$root.auth.user_role_id === 1">
+          <select v-model="form.employee_id" class="form-select shadow-none form-control-line">
+            <option
+              v-for="employee in employees"
+              :key="employee.id"
+              :value="employee.id"
+              v-text="employee.name"
+            ></option>
+          </select>
+        </div>
         <div class="form-group">
           <label>From Date</label>
           <input type="date" class="form-control form-control-line" v-model="form.from_date">
@@ -30,8 +40,19 @@ export default {
   mixins: [bsModalComponentOptions("bsModal")],
   data:() => ({
     form: {},
+    employees: []
   }),
+  mounted() {
+    this.getEmployees()
+  },
   methods: {
+    async getEmployees() {
+      const { results } = (
+        await axios.get(`/api/employee`, this.$root.headersRequestAPI)
+      ).data ?? []
+
+      this.employees = results.data
+    }, 
     onFilterSubmit() {
       this.$emit("filter-update", this.form)
       this.$refs.bsModal.hide()
