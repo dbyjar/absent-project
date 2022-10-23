@@ -126,6 +126,7 @@ export default {
         ).data ?? {}
 
         this.table = results
+        this.$emit("fetch-done", this.table.data)
       } catch (error) {
         this.table = {}
       }

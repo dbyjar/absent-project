@@ -178,6 +178,9 @@ return [
         /* JWT */
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
+        /* Excel */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -239,6 +242,9 @@ return [
 
         // Pusher
         'Pusher' => Pusher\Pusher::class,
+
+        // Excel
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

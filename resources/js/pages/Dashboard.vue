@@ -1,6 +1,12 @@
 <template>
     <div>
         <Tools withoutDefaultButton>
+            <btn-export-excel
+                class="me-1 text-white"
+                :data="attendanceDataExport"
+                :fields="fieldDataExport"
+                :model="'attendance'"
+            ></btn-export-excel>
             <button class="btn btn-secondary me-1" @click="showFilterModal = true">
                 <span>Filter</span>
             </button>
@@ -19,7 +25,10 @@
         <div class="row">
             <div class="col-lg-12">
                 <Box :title="title">
-                    <attendance-table ref="attendanceTable"></attendance-table>
+                    <attendance-table
+                        ref="attendanceTable"
+                        @data="(data) => attendanceDataExport = data"
+                    ></attendance-table>
                     <template #right-side></template>
                 </Box>
             </div>
@@ -36,11 +45,12 @@
 </template>
 
 <script>
+import BtnExportExcel from '@components/BtnExportExcel.vue'
 import AttendanceTable from '@components/table/AttendanceTable.vue'
 import FilterDashboardModal from '@components/modal/FilterDashboardModal.vue'
 
 export default {
-    components: { AttendanceTable, FilterDashboardModal },
+    components: { AttendanceTable, FilterDashboardModal, BtnExportExcel },
     computed: {
         user() {
             return this.$root.auth
@@ -58,9 +68,19 @@ export default {
         filter: {},
         columns: [],
         loading: false,
-        showFilterModal: false
+        showFilterModal: false,
+        attendanceDataExport: [],
+        fieldDataExport: {
+            "Name": 'user.name',
+            "Punch In": 'punch_in',
+            "Shift": 'shift_and_salary.name',
+            "Price": 'shift_and_salary.price'
+        },
     }),
     methods: {
+        async getExcel() {
+            await axios.get("/api/attendance/get_excel", this.$root.headersRequestAPI)
+        },
         async triggerPusherAPI() {
             this.loading = true
             
@@ -73,6 +93,6 @@ export default {
 
             this.loading = false
         },
-    }
+    },
 }
 </script>

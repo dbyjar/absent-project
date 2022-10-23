@@ -5,6 +5,7 @@
     :columns="columns"
     v-slot="{ rows }"
     withoutOptionColumn
+    @fetch-done="(data) => $emit('data', data)"
   >
     <base-table-row v-for="row in rows" :key="row.id">
       <base-table-column>{{ row.user?.name }}</base-table-column>

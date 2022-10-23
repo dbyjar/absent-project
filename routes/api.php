@@ -26,6 +26,7 @@ Route::post('register', [AuthController::class, 'register']);
 // for Attendance
 Route::get('shift_select', [ShiftAndSalaryController::class, 'index']);
 Route::post('absent', [AttendanceController::class, 'absent']);
+Route::post('get_excel', [AttendanceController::class, 'getExcel']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::post('logout', [AuthController::class, 'logout']);

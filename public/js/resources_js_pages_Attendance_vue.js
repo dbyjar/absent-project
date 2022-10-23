@@ -126,6 +126,11 @@ var render = function render() {
       columns: _vm.columns,
       withoutOptionColumn: ""
     },
+    on: {
+      "fetch-done": function fetchDone(data) {
+        return _vm.$emit("data", data);
+      }
+    },
     scopedSlots: _vm._u([{
       key: "default",
       fn: function fn(_ref) {

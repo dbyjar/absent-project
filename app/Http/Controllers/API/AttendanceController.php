@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use Auth;
+use Excel;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,8 +11,8 @@ use App\Models\Attendance;
 use App\Models\User;
 use App\Events\ShowDataAbsent;
 use Illuminate\Support\Facades\Storage;
-// use App\Http\Requests\AbsentRequest;
 use Illuminate\Support\Facades\DB;
+use App\Exports\AttendanceExport;
 
 class AttendanceController extends Controller
 {
@@ -118,5 +119,9 @@ class AttendanceController extends Controller
                 "data" => $attendance
             ]
         ]);
+    }
+
+    public function getExcel() {
+        return Excel::download(new AttendanceExport, 'attendance.xlsx');
     }
 }

@@ -8,12 +8,15 @@ window.Pusher = require('pusher-js');
 import Vue from 'vue';
 import Cookies from 'js-cookie';
 import PortalVue from 'portal-vue'
+import ExportExcel from 'vue-excel-export'
+
 import router from './router/index'
 import { global } from './mixins'
 import App from './layouts/Index.vue'
 
 Vue.mixin(global);
-Vue.use(PortalVue)
+Vue.use(PortalVue);
+Vue.use(ExportExcel);
 
 const files = require.context('./components/global/', true, /\.vue$/i)
 files
