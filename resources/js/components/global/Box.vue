@@ -4,7 +4,7 @@
       {{ title }}
     </div>
     <div class="card-body">
-      <div class="d-md-flex">
+      <div class="d-md-flex mb-3" v-if="title">
         <div v-if="!header" class="text-capitalize">
           <h4 class="card-title">{{ title }}</h4>
           <h5 class="card-subtitle">{{ subtitle }}</h5>
@@ -13,7 +13,7 @@
           <slot name="right-side"></slot>
         </div>
       </div>
-      <div class="mt-3">
+      <div>
         <slot></slot>
       </div>
     </div>
@@ -28,7 +28,7 @@ export default {
   props: {
     header: {
       type: Boolean,
-      default: false
+      default: false,
     },
     title: {
       type: String,
@@ -38,6 +38,6 @@ export default {
       type: String,
       default: "",
     },
-  }
-}
+  },
+};
 </script>

@@ -15,12 +15,23 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $data = $request->only('name', 'email', 'password');
+        $data = $request->all();
+        
+        if ($request->user_role_id === 1 ) {
+            $data['password'] = "admin123"; // default password
+        } else {
+            $data['password'] = "user123"; // default password
+        }
 
         $validator = Validator::make($data, [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6|max:50'
+            'nik' => 'required|string',
+            'phone' => 'string',
+            'birthdate' => 'date',
+            'address' => 'string',
+            'user_role_id'=> 'required|integer',
+            'job_id'=> 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -31,7 +42,12 @@ class AuthController extends Controller
         	'name' => $request->name,
         	'email' => $request->email,
         	'password' => bcrypt($request->password),
-            'user_role_id' => 1
+            'phone' => $request->phone,
+            'birthdate' => $request->birthdate,
+            'address' => $request->address,
+            'user_role_id' => $request->user_role_id,
+            'job_id' => $request->job_id,
+            'nik' => $request->nik,
         ]);
 
         return response()->json([

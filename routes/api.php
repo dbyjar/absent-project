@@ -35,6 +35,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     // Employee
     Route::prefix('employee')->group(function () {
         Route::get('/', [EmployeeController::class, 'index']);
+        Route::post('/', [AuthController::class, 'register']);
+        Route::get('/{id}', [EmployeeController::class, 'show']);
+        Route::delete('/{id}', [EmployeeController::class, 'destroy']);
+        Route::put('/{id}', [EmployeeController::class, 'update']);
     });
 
     Route::resource('job', JobController::class, [

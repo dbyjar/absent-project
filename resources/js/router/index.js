@@ -77,6 +77,36 @@ const routes = [
     }
   },
   {
+    name: 'user-create',
+    path: '/iuejrnakskda/create',
+    component: () => import('@pages/UserSetData.vue'),
+    meta: {
+      pageAct: "create",
+      menuTranslate: "user",
+      origin: "users"
+    }
+  },
+  {
+    name: 'user-edit',
+    path: '/iuejrnakskda/edit/:id',
+    component: () => import('@pages/UserSetData.vue'),
+    meta: {
+      pageAct: "edit",
+      menuTranslate: "user",
+      origin: "users"
+    }
+  },
+  {
+    name: 'user-detail',
+    path: '/iuejrnakskda/detail/:id',
+    component: () => import('@pages/UserDetail.vue'),
+    meta: {
+      pageAct: "detail",
+      menuTranslate: "user",
+      origin: "users"
+    }
+  },
+  {
     name: 'jobs',
     path: '/bakjhrie',
     component: () => import('@pages/Jobs.vue'),

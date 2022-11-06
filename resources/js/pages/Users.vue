@@ -1,34 +1,40 @@
 <template>
   <div>
-    <!-- <Tools @click="$router.push({
-      name: 'user-create'
-    })" /> -->
+    <Tools
+      @click="
+        $router.push({
+          name: 'user-create',
+        })
+      "
+    />
     <div class="row">
       <div class="col-lg-12">
         <Box>
           <BaseTable
+            ref="table"
             :config="{
               namespace: 'employee',
               params: {
-                user_id: 1
-              }
+                user_id: 1,
+              },
             }"
             :columns="columns"
             v-slot="{ rows }"
-            withoutOptionColumn
           >
             <base-table-row v-for="row in rows" :key="row.id">
-              <base-table-column>{{ formatDate(row.created_at) }}</base-table-column>
+              <base-table-column>{{
+                formatDate(row.created_at)
+              }}</base-table-column>
               <base-table-column>{{ row.name }}</base-table-column>
               <base-table-column>{{ row.email }}</base-table-column>
               <base-table-column>{{ row.user_role.name }}</base-table-column>
-              <!-- <base-table-column class="text-end" overflow-visible>
-              <action-tool
-                @edit="edit(row.id)"
-                @remove="remove(row.id)"
-                withoutDetail
-              ></action-tool>
-              </base-table-column> -->
+              <base-table-column class="text-end" overflow-visible>
+                <action-tool
+                  @edit="edit(row.id)"
+                  @remove="remove(row.id)"
+                  @detail="detail(row.id)"
+                ></action-tool>
+              </base-table-column>
             </base-table-row>
           </BaseTable>
         </Box>
@@ -57,7 +63,26 @@ export default {
         name: "role",
         class: "",
       },
-    ]
+    ],
   }),
-}
+  methods: {
+    edit(id) {
+      this.$router.push({
+        name: "user-edit",
+        params: { id },
+      });
+    },
+    async remove(id) {
+      await axios.delete(`/api/employee/${id}`, this.$root.headersRequestAPI);
+
+      this.$refs.table.fetchs();
+    },
+    async detail(id) {
+      this.$router.push({
+        name: "user-detail",
+        params: { id },
+      });
+    },
+  },
+};
 </script>

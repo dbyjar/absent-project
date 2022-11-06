@@ -1,10 +1,10 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_Users_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_UserDetail_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Users.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Users.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UserDetail.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UserDetail.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -22,84 +22,79 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      user: {},
       columns: [{
-        name: "created at",
+        name: "punch in",
         "class": ""
       }, {
-        name: "name",
+        name: "shift",
         "class": ""
       }, {
-        name: "email",
-        "class": ""
-      }, {
-        name: "role",
+        name: "price",
         "class": ""
       }]
     };
   },
-  methods: {
-    edit: function edit(id) {
-      this.$router.push({
-        name: "user-edit",
-        params: {
-          id: id
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var _yield$axios$get$data;
+
+      var _ref, results;
+
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return axios.get("/api/employee/".concat(_this.$route.params.id), _this.$root.headersRequestAPI);
+
+            case 2:
+              _context.t1 = _yield$axios$get$data = _context.sent.data;
+              _context.t0 = _context.t1 !== null;
+
+              if (!_context.t0) {
+                _context.next = 6;
+                break;
+              }
+
+              _context.t0 = _yield$axios$get$data !== void 0;
+
+            case 6:
+              if (!_context.t0) {
+                _context.next = 10;
+                break;
+              }
+
+              _context.t2 = _yield$axios$get$data;
+              _context.next = 11;
+              break;
+
+            case 10:
+              _context.t2 = {};
+
+            case 11:
+              _ref = _context.t2;
+              results = _ref.results;
+              _this.user = results.data;
+
+            case 14:
+            case "end":
+              return _context.stop();
+          }
         }
-      });
-    },
-    remove: function remove(id) {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return axios["delete"]("/api/employee/".concat(id), _this.$root.headersRequestAPI);
-
-              case 2:
-                _this.$refs.table.fetchs();
-
-              case 3:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    detail: function detail(id) {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _this2.$router.push({
-                  name: "user-detail",
-                  params: {
-                    id: id
-                  }
-                });
-
-              case 1:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
-    }
+      }, _callee);
+    }))();
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Users.vue?vue&type=template&id=91a5db62&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Users.vue?vue&type=template&id=91a5db62& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UserDetail.vue?vue&type=template&id=17522045&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UserDetail.vue?vue&type=template&id=17522045& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -111,54 +106,36 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("Tools", {
-    on: {
-      click: function click($event) {
-        return _vm.$router.push({
-          name: "user-create"
-        });
-      }
-    }
-  }), _vm._v(" "), _c("div", {
+  return _c("div", [_c("Box", [_c("table", [_c("tr", [_c("th", [_vm._v("Nama")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.name))])]), _vm._v(" "), _c("tr", [_c("th", [_vm._v("Email")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.email))])]), _vm._v(" "), _c("tr", [_c("th", [_vm._v("ID")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.nik))])]), _vm._v(" "), _c("tr", [_c("th", [_vm._v("Birthdate")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.birthdate))])]), _vm._v(" "), _c("tr", [_c("th", [_vm._v("phone")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.phone))])]), _vm._v(" "), _c("tr", [_c("th", [_vm._v("Role")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.user_role.name))])]), _vm._v(" "), _c("tr", [_c("th", [_vm._v("Job")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.job.name))])]), _vm._v(" "), _c("tr", [_c("th", [_vm._v("Address")]), _vm._v(" "), _c("th", [_vm._v(":")]), _vm._v(" "), _c("td", [_vm._v(_vm._s(_vm.user.address))])])])]), _vm._v(" "), _c("div", {
     staticClass: "row"
   }, [_c("div", {
     staticClass: "col-lg-12"
-  }, [_c("Box", [_c("BaseTable", {
+  }, [_c("Box", {
+    attrs: {
+      title: "Attendance"
+    }
+  }, [_c("BaseTable", {
     ref: "table",
     attrs: {
       config: {
-        namespace: "employee",
+        namespace: "attendance",
         params: {
-          user_id: 1
+          employee_id: _vm.$route.params.id
         }
       },
-      columns: _vm.columns
+      columns: _vm.columns,
+      withoutOptionColumn: ""
     },
     scopedSlots: _vm._u([{
       key: "default",
       fn: function fn(_ref) {
         var rows = _ref.rows;
         return _vm._l(rows, function (row) {
+          var _row$shift_and_salary, _row$shift_and_salary2;
+
           return _c("base-table-row", {
             key: row.id
-          }, [_c("base-table-column", [_vm._v(_vm._s(_vm.formatDate(row.created_at)))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.name))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.email))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s(row.user_role.name))]), _vm._v(" "), _c("base-table-column", {
-            staticClass: "text-end",
-            attrs: {
-              "overflow-visible": ""
-            }
-          }, [_c("action-tool", {
-            on: {
-              edit: function edit($event) {
-                return _vm.edit(row.id);
-              },
-              remove: function remove($event) {
-                return _vm.remove(row.id);
-              },
-              detail: function detail($event) {
-                return _vm.detail(row.id);
-              }
-            }
-          })], 1)], 1);
+          }, [_c("base-table-column", [_vm._v(_vm._s(row.punch_in))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s((_row$shift_and_salary = row.shift_and_salary) === null || _row$shift_and_salary === void 0 ? void 0 : _row$shift_and_salary.name))]), _vm._v(" "), _c("base-table-column", [_vm._v(_vm._s((_row$shift_and_salary2 = row.shift_and_salary) === null || _row$shift_and_salary2 === void 0 ? void 0 : _row$shift_and_salary2.price))])], 1);
         });
       }
     }])
@@ -171,18 +148,18 @@ render._withStripped = true;
 
 /***/ }),
 
-/***/ "./resources/js/pages/Users.vue":
-/*!**************************************!*\
-  !*** ./resources/js/pages/Users.vue ***!
-  \**************************************/
+/***/ "./resources/js/pages/UserDetail.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/pages/UserDetail.vue ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Users_vue_vue_type_template_id_91a5db62___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Users.vue?vue&type=template&id=91a5db62& */ "./resources/js/pages/Users.vue?vue&type=template&id=91a5db62&");
-/* harmony import */ var _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Users.vue?vue&type=script&lang=js& */ "./resources/js/pages/Users.vue?vue&type=script&lang=js&");
+/* harmony import */ var _UserDetail_vue_vue_type_template_id_17522045___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserDetail.vue?vue&type=template&id=17522045& */ "./resources/js/pages/UserDetail.vue?vue&type=template&id=17522045&");
+/* harmony import */ var _UserDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserDetail.vue?vue&type=script&lang=js& */ "./resources/js/pages/UserDetail.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -192,9 +169,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Users_vue_vue_type_template_id_91a5db62___WEBPACK_IMPORTED_MODULE_0__.render,
-  _Users_vue_vue_type_template_id_91a5db62___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _UserDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserDetail_vue_vue_type_template_id_17522045___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UserDetail_vue_vue_type_template_id_17522045___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -204,38 +181,38 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/Users.vue"
+component.options.__file = "resources/js/pages/UserDetail.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/Users.vue?vue&type=script&lang=js&":
-/*!***************************************************************!*\
-  !*** ./resources/js/pages/Users.vue?vue&type=script&lang=js& ***!
-  \***************************************************************/
+/***/ "./resources/js/pages/UserDetail.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/pages/UserDetail.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Users.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Users.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UserDetail.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UserDetail.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDetail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/Users.vue?vue&type=template&id=91a5db62&":
-/*!*********************************************************************!*\
-  !*** ./resources/js/pages/Users.vue?vue&type=template&id=91a5db62& ***!
-  \*********************************************************************/
+/***/ "./resources/js/pages/UserDetail.vue?vue&type=template&id=17522045&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/pages/UserDetail.vue?vue&type=template&id=17522045& ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_91a5db62___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_91a5db62___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDetail_vue_vue_type_template_id_17522045___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDetail_vue_vue_type_template_id_17522045___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Users_vue_vue_type_template_id_91a5db62___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Users.vue?vue&type=template&id=91a5db62& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/Users.vue?vue&type=template&id=91a5db62&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_UserDetail_vue_vue_type_template_id_17522045___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UserDetail.vue?vue&type=template&id=17522045& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UserDetail.vue?vue&type=template&id=17522045&");
 
 
 /***/ })
