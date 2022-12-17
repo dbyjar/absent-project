@@ -9,6 +9,8 @@ import Vue from 'vue';
 import Cookies from 'js-cookie';
 import PortalVue from 'portal-vue'
 import ExportExcel from 'vue-excel-export'
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 import router from './router/index'
 import { global } from './mixins'
@@ -17,6 +19,7 @@ import App from './layouts/Index.vue'
 Vue.mixin(global);
 Vue.use(PortalVue);
 Vue.use(ExportExcel);
+Vue.use(VueSweetalert2);
 
 const files = require.context('./components/global/', true, /\.vue$/i)
 files

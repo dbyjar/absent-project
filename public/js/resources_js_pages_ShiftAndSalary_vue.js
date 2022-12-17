@@ -44,23 +44,73 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     remove: function remove(id) {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+        var swalWithBootstrapButtons;
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context.next = 2;
-                return axios["delete"]("/api/shift_and_salary/".concat(id), _this.$root.headersRequestAPI);
+                swalWithBootstrapButtons = _this.$swal.mixin({
+                  customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                  },
+                  buttonsStyling: false
+                });
+
+                _this.$swal({
+                  title: "Are you sure?",
+                  text: "will you remove this?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonText: "Yes, delete it!",
+                  cancelButtonText: "No, cancel!",
+                  reverseButtons: true
+                }).then( /*#__PURE__*/function () {
+                  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(result) {
+                    return _regeneratorRuntime().wrap(function _callee$(_context) {
+                      while (1) {
+                        switch (_context.prev = _context.next) {
+                          case 0:
+                            if (!result.isConfirmed) {
+                              _context.next = 7;
+                              break;
+                            }
+
+                            _context.next = 3;
+                            return axios["delete"]("/api/shift_and_salary/".concat(id), _this.$root.headersRequestAPI);
+
+                          case 3:
+                            _this.$refs.table.fetchs();
+
+                            swalWithBootstrapButtons.fire("Deleted!", "success deleted.", "success");
+                            _context.next = 8;
+                            break;
+
+                          case 7:
+                            if (result.dismiss === _this.$swal.DismissReason.cancel) {
+                              swalWithBootstrapButtons.fire("Cancelled", "Your data is safe :)", "error");
+                            }
+
+                          case 8:
+                          case "end":
+                            return _context.stop();
+                        }
+                      }
+                    }, _callee);
+                  }));
+
+                  return function (_x) {
+                    return _ref.apply(this, arguments);
+                  };
+                }());
 
               case 2:
-                _this.$refs.table.fetchs();
-
-              case 3:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee);
+        }, _callee2);
       }))();
     }
   }

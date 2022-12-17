@@ -73,9 +73,44 @@ export default {
       });
     },
     async remove(id) {
-      await axios.delete(`/api/employee/${id}`, this.$root.headersRequestAPI);
+      const swalWithBootstrapButtons = this.$swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success",
+          cancelButton: "btn btn-danger",
+        },
+        buttonsStyling: false,
+      });
 
-      this.$refs.table.fetchs();
+      this.$swal({
+        title: "Are you sure?",
+        text: "will you remove this?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await axios.delete(
+            `/api/employee/${id}`,
+            this.$root.headersRequestAPI
+          );
+
+          this.$refs.table.fetchs();
+
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "success deleted.",
+            "success"
+          );
+        } else if (result.dismiss === this.$swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your data is safe :)",
+            "error"
+          );
+        }
+      });
     },
     async detail(id) {
       this.$router.push({

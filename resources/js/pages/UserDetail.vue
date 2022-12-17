@@ -23,19 +23,19 @@
           <td>{{ user.birthdate }}</td>
         </tr>
         <tr>
-          <th>phone</th>
+          <th>Phone</th>
           <th>:</th>
           <td>{{ user.phone }}</td>
         </tr>
         <tr>
           <th>Role</th>
           <th>:</th>
-          <td>{{ user.user_role.name }}</td>
+          <td>{{ user.user_role ? user.user_role.name : "" }}</td>
         </tr>
         <tr>
           <th>Job</th>
           <th>:</th>
-          <td>{{ user.job.name }}</td>
+          <td>{{ user.job ? user.job.name : "" }}</td>
         </tr>
         <tr>
           <th>Address</th>
